@@ -1,0 +1,15 @@
+# Misc
+alias sudo="sudo "
+alias c="clear"
+
+# VIM
+alias vim="nvim"
+alias ovim="/usr/bin/vim"
+
+# LSD
+alias ls="lsd"
+alias lso="/usr/bin/ls"
+alias tree="lsd --tree"
+
+# Go Task
+alias task="/usr/bin/go-task"
