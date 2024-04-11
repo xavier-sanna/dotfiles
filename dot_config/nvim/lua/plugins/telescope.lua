@@ -57,6 +57,9 @@ return {
     keymap.set('n', '<leader>fg', builtin.live_grep, { desc='Find string' })
     keymap.set('n', '<leader>fb', builtin.buffers, { desc='Find buffers' })
     keymap.set('n', '<leader>fh', builtin.help_tags, { desc='Find help tags' })
+    keymap.set('n', '<leader>ft', builtin.colorscheme, { desc='Select colorscheme' })
+    keymap.set('n', '<leader>fc', builtin.commands, { desc='Find commands' })
+    keymap.set('n', '<leader>fk', builtin.keymaps, { desc='Find keymaps' })
 
     -- which-key
     wk.register({
