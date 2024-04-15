@@ -37,12 +37,13 @@ return {
     vim.api.nvim_create_autocmd('User', {
         pattern = 'AutoSaveWritePost',
         group = group,
-        callback = function(opts)
-            if opts.data.saved_buffer ~= nil then
-                local filename = vim.api.nvim_buf_get_name(opts.data.saved_buffer)
+        callback = function(callback_opts)
+            if callback_opts.data.saved_buffer ~= nil then
+                local filename = vim.api.nvim_buf_get_name(callback_opts.data.saved_buffer)
                 print('We have saved ' .. filename .. ' get ready captain!')
             end
         end,
     })
+
   end
 }

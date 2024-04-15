@@ -116,8 +116,8 @@ return {
         nowait = true,
       },
       mappings = {
-        ['<space>'] = { 
-            'toggle_node', 
+        ['<space>'] = {
+            'toggle_node',
             nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
         },
         ['<2-LeftMouse>'] = 'open',
@@ -139,7 +139,7 @@ return {
         -- ['C'] = 'close_all_subnodes',
         ['z'] = 'close_all_nodes',
         --['Z'] = 'expand_all_nodes',
-        ['a'] = { 
+        ['a'] = {
           'add',
           -- this command supports BASH style brace expansion ('x{a,b,c}' -> xa,xb,xc). see `:h neo-tree-file-actions` for details
           -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -174,7 +174,7 @@ return {
       filtered_items = {
         visible = false, -- when true, they will just be displayed differently than normal items
         hide_dotfiles = false,
-        hide_gitignored = dalse,
+        hide_gitignored = false,
         hide_by_name = {
           --'node_modules'
         },

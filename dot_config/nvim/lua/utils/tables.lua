@@ -1,7 +1,7 @@
-tables = {}
+local tables = {}
 
 function tables.check(item, haystack)
-  for i,v in ipairs(haystack) do
+  for _,v in ipairs(haystack) do
     if v == item then
       return true
     end

@@ -8,9 +8,9 @@ end
 
 local get_themes_list = function()
   local paths = vim.api.nvim_get_runtime_file('lua/plugins/lualine/themes/*.lua', true)
-  local filenames = {} 
+  local filenames = {}
 
-  for i,v in ipairs(paths) do
+  for _,v in ipairs(paths) do
     filenames[#filenames+1] = file_utils.get_filename(v).filename
   end
 
@@ -50,7 +50,7 @@ return {
 
         user_config.update_value('lualine_theme', theme_name)
 
-        lualine.hide()
+        lualine.hide(_)
         vim.cmd('Lazy reload lualine.nvim')
       end,
       {

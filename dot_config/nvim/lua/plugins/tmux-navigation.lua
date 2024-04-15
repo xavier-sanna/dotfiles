@@ -1,4 +1,4 @@
-return { 
+return {
   'alexghergh/nvim-tmux-navigation',
   config = function()
 

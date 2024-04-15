@@ -12,7 +12,7 @@ return {
     wk.register({
       ['<leader>s'] = {
         name = 'search'
-      }     
+      }
     })
 
     vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
