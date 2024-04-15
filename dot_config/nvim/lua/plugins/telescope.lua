@@ -44,7 +44,6 @@ return {
     local telescope = require('telescope')
     local builtin = require('telescope.builtin')
     local wk = require('which-key')
-    local keymap = vim.keymap
 
     -- setup
     telescope.setup(opts)
@@ -53,18 +52,17 @@ return {
     telescope.load_extension('fzf')
 
     -- keymaps
-    keymap.set('n', '<leader>ff', builtin.find_files, { desc='Find files' })
-    keymap.set('n', '<leader>fg', builtin.live_grep, { desc='Find string' })
-    keymap.set('n', '<leader>fb', builtin.buffers, { desc='Find buffers' })
-    keymap.set('n', '<leader>fh', builtin.help_tags, { desc='Find help tags' })
-    keymap.set('n', '<leader>ft', builtin.colorscheme, { desc='Select colorscheme' })
-    keymap.set('n', '<leader>fc', builtin.commands, { desc='Find commands' })
-    keymap.set('n', '<leader>fk', builtin.keymaps, { desc='Find keymaps' })
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc='Find files' })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc='Find string' })
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc='Find buffers' })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc='Find help tags' })
+    vim.keymap.set('n', '<leader>ft', builtin.colorscheme, { desc='Select colorscheme' })
+    vim.keymap.set('n', '<leader>fc', builtin.commands, { desc='Find commands' })
+    vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc='Find keymaps' })
 
     -- which-key
     wk.register({
       ['<leader>f'] = { name='+find' }
     })
-
   end
 }

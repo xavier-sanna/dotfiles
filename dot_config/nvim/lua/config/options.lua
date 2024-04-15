@@ -39,5 +39,3 @@ vim.opt.clipboard:append("unnamedplus")
 -- spelling
 -- vim.opt.spell = true
 -- vim.opt.spelllang = 'en_us'
-
--- folding

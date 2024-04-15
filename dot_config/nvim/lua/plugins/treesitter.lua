@@ -26,6 +26,7 @@ local install_list = {
   'rust',
   'scss',
   'sql',
+  'terraform',
   'toml',
   'twig',
   'vim',

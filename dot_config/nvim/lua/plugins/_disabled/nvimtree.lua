@@ -111,10 +111,7 @@ return {
   config = function(_, opts)
     require('nvim-tree').setup(opts)
 
-    -- keymaps
-    local keymap = vim.keymap
-
-    keymap.set('n', '\\\\', '<cmd>NvimTreeToggle<CR>', { noremap=true, desc='NvimTree Toggle' })
-    keymap.set('n', '\\r', '<cmd>NvimTreeRefresh<CR>', { noremap=true, desc='nvimTree Refresh' })
+    vim.keymap.set('n', '\\\\', '<cmd>NvimTreeToggle<CR>', { noremap=true, desc='NvimTree Toggle' })
+    vim.keymap.set('n', '\\r', '<cmd>NvimTreeRefresh<CR>', { noremap=true, desc='nvimTree Refresh' })
   end
 }

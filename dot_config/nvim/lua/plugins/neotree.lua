@@ -303,8 +303,7 @@ return {
 
     require('neo-tree').setup(opts)
 
-    local keymap = vim.keymap
 
-    keymap.set('n', '\\\\', '<cmd>Neotree reveal toggle<CR>', { noremap=true, desc='NvimTree Toggle' })
+    vim.keymap.set('n', '\\\\', '<cmd>Neotree reveal toggle<CR>', { noremap=true, desc='NvimTree Toggle' })
   end
 }
