@@ -189,6 +189,7 @@ return {
           '.DS_Store',
           'thumbs.db',
           '.idea',
+          '.git',
         },
         never_show_by_pattern = { -- uses glob style patterns
           --'.null-ls_*',
