@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "my-qtile-config"
+version = "0.1.0"
+description = "qtile configuration managed by Chezmoi"
+authors = ["Xavier Sanna <22643870+xavier-sanna@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "my_qtile_config"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.pyright]
+exclude = [
+    "**/__pycache__",
+]
+stubPath = ""
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
