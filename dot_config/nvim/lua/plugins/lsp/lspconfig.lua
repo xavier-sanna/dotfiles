@@ -1,10 +1,10 @@
 return {
-  'neovim/nvim-lspconfig',
-  event = {'BufReadPre', 'BufNewFile'},
+  "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
-    { 'antosha417/nvim-lsp-file-operations', config = true },
-    { 'folke/neodev.nvim', opts = {} },
+    "hrsh7th/cmp-nvim-lsp",
+    { "antosha417/nvim-lsp-file-operations", config = true },
+    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     -- import lspconfig plugin
@@ -67,6 +67,12 @@ return {
       end,
     })
 
+    local wk = require("which-key")
+
+    wk.register({
+      ["<leader>r"] = { name = "lsp" },
+    })
+
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
@@ -83,6 +89,14 @@ return {
       function(server_name)
         lspconfig[server_name].setup({
           capabilities = capabilities,
+        })
+      end,
+      ["intelephense"] = function()
+        lspconfig["intelephense"].setup({
+          capabilities = capabilities,
+          init_options = {
+            licenceKey = "$HOME/intelephense/intelephense_licence_key",
+          },
         })
       end,
       ["graphql"] = function()
@@ -110,5 +124,5 @@ return {
         })
       end,
     })
-  end
+  end,
 }

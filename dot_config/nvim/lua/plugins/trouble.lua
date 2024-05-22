@@ -35,14 +35,14 @@ return {
   },
   opts = {}, -- for default options, refer to the configuration section for custom setup.
   config = function(_, opts)
-    require('trouble').setup(opts)
+    require("trouble").setup(opts)
 
-    local wk = require('which-key')
+    local wk = require("which-key")
 
     wk.register({
-      ['<leader>x'] = {
-        name = 'trouble'
-      }
+      ["<leader>x"] = {
+        name = "trouble",
+      },
     })
-  end
+  end,
 }
