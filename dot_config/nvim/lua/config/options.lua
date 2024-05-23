@@ -24,14 +24,14 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 
 -- undo/history
-vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
 vim.opt.history = 10000
 
 -- UI
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- clipboard
 vim.opt.clipboard:append("unnamedplus")
