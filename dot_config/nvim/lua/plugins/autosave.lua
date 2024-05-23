@@ -43,7 +43,8 @@ return {
                 local username = vim.env.USER
 
                 if filename:match('^/home/' .. username .. '/.local/share/chezmoi/.*') then
-                  vim.cmd('! chezmoi apply --source-path "%"')
+                  vim.cmd('silent ! chezmoi apply --source-path "%"')
+                  print('Chezmoi source file detected: auto applied ' .. filename)
                 end
             end
         end,
