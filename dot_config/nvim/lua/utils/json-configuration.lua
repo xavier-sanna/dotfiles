@@ -30,7 +30,7 @@ local function get_file_content()
 
   if vim.fn.filereadable(config_path) == 0 then
     print(vim.inspect('user configuration file does not exist - creating..'))
-    
+
     write_content_to_file(DEFAULT_VALUES)
 
     content = DEFAULT_VALUES

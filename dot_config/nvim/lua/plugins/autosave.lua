@@ -32,7 +32,7 @@ return {
   config = function(_, opts)
     require('auto-save').setup(opts)
 
-    local group = vim.api.nvim_create_augroup('autosave', {})
+    local group = vim.api.nvim_create_augroup('autosave', { clear=true })
 
     vim.api.nvim_create_autocmd('User', {
         pattern = 'AutoSaveWritePost',
@@ -40,10 +40,15 @@ return {
         callback = function(callback_opts)
             if callback_opts.data.saved_buffer ~= nil then
                 local filename = vim.api.nvim_buf_get_name(callback_opts.data.saved_buffer)
-                print('We have saved ' .. filename .. ' get ready captain!')
+                local username = vim.env.USER
+
+                if filename:match('^/home/' .. username .. '/.local/share/chezmoi/.*') then
+                  vim.cmd('! chezmoi apply --source-path "%"')
+                end
             end
         end,
     })
-
   end
 }
+
+-- vim: set filetype=lua:
