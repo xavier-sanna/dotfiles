@@ -33,6 +33,7 @@ local install_list = {
 	"vimdoc",
 	"yaml",
 	"yuck",
+	"hcl",
 }
 
 return {

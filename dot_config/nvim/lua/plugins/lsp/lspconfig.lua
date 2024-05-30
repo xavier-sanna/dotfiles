@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"williamboman/mason-lspconfig.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
 	},
@@ -42,7 +43,7 @@ return {
 				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", key_opts) -- show lsp type definitions
 
 				key_opts.desc = "See available code actions"
-				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, key_opts) -- see available code actions, in visual mode will apply to selection
+				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, key_opts)
 
 				key_opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, key_opts) -- smart rename
@@ -99,13 +100,6 @@ return {
 					},
 				})
 			end,
-			["graphql"] = function()
-				-- configure graphql language server
-				lspconfig["graphql"].setup({
-					capabilities = capabilities,
-					filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-				})
-			end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
@@ -123,6 +117,34 @@ return {
 					},
 				})
 			end,
+			-- ["yamlls"] = function()
+			-- 	lspconfig["yamlls"].setup({
+			-- 		settings = {
+			-- 			yaml = {
+			-- 				validate = true,
+			-- 				schemas = {
+			-- 					["https://taskfile.dev/schema.json"] = {
+			-- 						"Taskfile.{yml,yaml}",
+			-- 						"*.Taskfile.{yml,yaml}",
+			-- 					},
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	})
+			-- end,
+			["denols"] = function()
+				lspconfig["denols"].setup({
+					root_dir = lspconfig.util.root_pattern("deno.json", "import_map.json"),
+				})
+			end,
+			-- ["eslint"] = function()
+			-- 	lspconfig["eslint"].setup({
+			-- 		settings = {
+			-- 			workingDirectory = { mode = "location" },
+			-- 		},
+			-- 		root_dir = lspconfig.util.find_git_ancestor(),
+			-- 	})
+			-- end,
 		})
 	end,
 }

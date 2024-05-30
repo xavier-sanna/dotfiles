@@ -65,20 +65,16 @@ source $HOME/.zshaliases
 # Rustup
 PATH="$HOME/.cargo/bin:$PATH"
 
-# fnm
-PATH="/home/xsanna/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
-
 ##>> Bun ##
 # bun completions
 [ -s "/home/xsanna/.bun/_bun" ] && source "/home/xsanna/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+PATH="$BUN_INSTALL/bin:$PATH"
 ##<< Bun ##
 
-# pnpm
+# PNPM
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;

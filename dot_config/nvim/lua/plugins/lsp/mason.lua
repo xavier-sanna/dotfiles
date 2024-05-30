@@ -35,14 +35,23 @@ return {
 				"lua_ls",
 				"graphql",
 				"prismals",
+				"docker_compose_language_service",
+				"dockerls",
+				"yamlls",
+				"eslint",
+				"bashls",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"eslint_d",
+				"prettier",
+				"stylua",
+				"yamllint",
+				"yamlfmt",
+				"shfmt",
+				"shellcheck",
+				"luacheck",
 			},
 		})
 	end,

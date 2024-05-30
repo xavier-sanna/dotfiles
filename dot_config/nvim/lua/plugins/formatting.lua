@@ -8,6 +8,8 @@ return {
 			javascript = { "prettierd", "prettier" },
 			typescript = { "prettierd", "prettier" },
 			php = { "php-cs-fixer" },
+			yaml = { "yamlfmt" },
+			sh = { "shfmt" },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
