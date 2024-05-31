@@ -85,66 +85,24 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		local handle_setup = function(server_name, extra_config)
+			local config = {
+				capabilities = capabilities,
+			}
+
+			if extra_config ~= nil then
+				config = { table.unpack(config), table.unpack(extra_config) }
+			end
+
+			lspconfig[server_name].setup(config)
+		end
+
 		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["intelephense"] = function()
-				lspconfig["intelephense"].setup({
-					capabilities = capabilities,
-					init_options = {
-						licenceKey = "$HOME/intelephense/intelephense_licence_key",
-					},
-				})
-			end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
-			-- ["yamlls"] = function()
-			-- 	lspconfig["yamlls"].setup({
-			-- 		settings = {
-			-- 			yaml = {
-			-- 				validate = true,
-			-- 				schemas = {
-			-- 					["https://taskfile.dev/schema.json"] = {
-			-- 						"Taskfile.{yml,yaml}",
-			-- 						"*.Taskfile.{yml,yaml}",
-			-- 					},
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 	})
-			-- end,
-			["denols"] = function()
-				lspconfig["denols"].setup({
-					root_dir = lspconfig.util.root_pattern("deno.json", "import_map.json"),
-				})
-			end,
-			-- ["eslint"] = function()
-			-- 	lspconfig["eslint"].setup({
-			-- 		settings = {
-			-- 			workingDirectory = { mode = "location" },
-			-- 		},
-			-- 		root_dir = lspconfig.util.find_git_ancestor(),
-			-- 	})
-			-- end,
+			handle_setup,
+			["gopls"] = handle_setup("gopls", require("plugins.lsp.settings.gopls")),
+			["lua_ls"] = handle_setup("lua_ls", require("plugins.lsp.settings.lua-ls")),
+			["yamlls"] = handle_setup("yamlls", require("plugins.lsp.settings.yamlls")),
+			["intelephense"] = handle_setup("intelephense", require("plugins.lsp.settings.intelephense")),
 		})
 	end,
 }

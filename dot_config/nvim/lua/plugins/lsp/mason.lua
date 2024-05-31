@@ -40,6 +40,7 @@ return {
 				"yamlls",
 				"eslint",
 				"bashls",
+				"gopls",
 			},
 		})
 
@@ -52,6 +53,7 @@ return {
 				"shfmt",
 				"shellcheck",
 				"luacheck",
+				"golangci-lint",
 			},
 		})
 	end,

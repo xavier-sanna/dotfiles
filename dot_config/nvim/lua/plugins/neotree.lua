@@ -12,7 +12,11 @@ return {
 		popup_border_style = "rounded",
 		enable_git_status = true,
 		enable_diagnostics = true,
-		open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
+		open_files_do_not_replace_types = {
+			"terminal",
+			"trouble",
+			"qf",
+		}, -- when opening files, do not use windows containing these filetypes or buftypes
 		sort_case_insensitive = false, -- used when sorting files and directories in the tree
 		sort_function = nil, -- use a custom function for sorting files and directories in the tree
 		-- sort_function = function (a,b)
@@ -141,13 +145,14 @@ return {
 				--['Z'] = 'expand_all_nodes',
 				["a"] = {
 					"add",
-					-- this command supports BASH style brace expansion ('x{a,b,c}' -> xa,xb,xc). see `:h neo-tree-file-actions` for details
+					-- this command supports BASH style brace expansion ('x{a,b,c}' -> xa,xb,xc).
+					-- see `:h neo-tree-file-actions` for details
 					-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 					config = {
 						show_path = "none", -- 'none', 'relative', 'absolute'
 					},
 				},
-				["A"] = "add_directory", -- also accepts the optional config.show_path option like 'add'. this also supports BASH style brace expansion.
+				["A"] = "add_directory",
 				["d"] = "delete",
 				["r"] = "rename",
 				["y"] = "copy_to_clipboard",
