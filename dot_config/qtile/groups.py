@@ -10,7 +10,7 @@ monadWide = MonadWide(margin=50, single_margin=[50, MTC_SINGLE_LR_MARGIN, 50, MT
 
 GROUPS = {
     "dev-machine": {
-        "DP-0": [
+        "DP-2": [
             {
                 "opts": {
                     "label": "",
@@ -92,106 +92,106 @@ GROUPS = {
                 "key": "0",
             },
         ],
-        "HDMI-0": [
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F1",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F2",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F3",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F4",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F5",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F6",
-            },
-        ],
-        "HDMI-1": [
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F7",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F8",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F9",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F10",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F11",
-            },
-            {
-                "opts": {
-                    "label": "",
-                    "layout": "monadthreecol",
-                    "layouts": [MonadThreeCol(margin=30, single_margin=30)],
-                },
-                "key": "F12",
-            }
-        ],
+        # "HDMI-0": [
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F1",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F2",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F3",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F4",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F5",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F6",
+        #     },
+        # ],
+        # "HDMI-1": [
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F7",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F8",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F9",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F10",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F11",
+        #     },
+        #     {
+        #         "opts": {
+        #             "label": "",
+        #             "layout": "monadthreecol",
+        #             "layouts": [MonadThreeCol(margin=30, single_margin=30)],
+        #         },
+        #         "key": "F12",
+        #     }
+        # ],
     }
 }
 

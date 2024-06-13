@@ -20,7 +20,7 @@ def get_screen_groups(idx):
 
 SCREENS = {
     "dev-machine": {
-        "DP-0": {
+        "DP-2": {
             "wallpaper": f"{getenv('HOME')}/.config/qtile/assets/wallpapers/51202861651_7d1784fbec_o.png",
             "wallpaper_mode": "stretch",
             "top": bar.Bar(
@@ -46,44 +46,44 @@ SCREENS = {
                 opacity=0.7,
             ),
         },
-        "HDMI-0": {
-            "wallpaper": f"{getenv('HOME')}/.config/qtile/assets/wallpapers/fuji.jpg",
-            "wallpaper_mode": "stretch",
-            "top": bar.Bar(
-                [
-                    widget.CurrentLayout(),
-                    widget.GroupBox(visible_groups=get_screen_groups(1)),
-                    widget.Prompt(),
-                    widget.Chord(
-                        chords_colors={
-                            "launch": ("#ff0000", "#ffffff"),
-                        },
-                        name_transform=lambda name: name.upper(),
-                    ),
-                    widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                ],
-                24,
-            ),
-        },
-        "HDMI-1": {
-            "wallpaper": f"{getenv('HOME')}/.config/qtile/assets/wallpapers/arch-synth.png",
-            "wallpaper_mode": "stretch",
-            "top": bar.Bar(
-                [
-                    widget.CurrentLayout(),
-                    widget.GroupBox(visible_groups=get_screen_groups(2)),
-                    widget.Prompt(),
-                    widget.Chord(
-                        chords_colors={
-                            "launch": ("#ff0000", "#ffffff"),
-                        },
-                        name_transform=lambda name: name.upper(),
-                    ),
-                    widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                ],
-                24,
-            ),
-        },
+        # "HDMI-0": {
+        #     "wallpaper": f"{getenv('HOME')}/.config/qtile/assets/wallpapers/fuji.jpg",
+        #     "wallpaper_mode": "stretch",
+        #     "top": bar.Bar(
+        #         [
+        #             widget.CurrentLayout(),
+        #             widget.GroupBox(visible_groups=get_screen_groups(1)),
+        #             widget.Prompt(),
+        #             widget.Chord(
+        #                 chords_colors={
+        #                     "launch": ("#ff0000", "#ffffff"),
+        #                 },
+        #                 name_transform=lambda name: name.upper(),
+        #             ),
+        #             widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        #         ],
+        #         24,
+        #     ),
+        # },
+        # "HDMI-1": {
+        #     "wallpaper": f"{getenv('HOME')}/.config/qtile/assets/wallpapers/arch-synth.png",
+        #     "wallpaper_mode": "stretch",
+        #     "top": bar.Bar(
+        #         [
+        #             widget.CurrentLayout(),
+        #             widget.GroupBox(visible_groups=get_screen_groups(2)),
+        #             widget.Prompt(),
+        #             widget.Chord(
+        #                 chords_colors={
+        #                     "launch": ("#ff0000", "#ffffff"),
+        #                 },
+        #                 name_transform=lambda name: name.upper(),
+        #             ),
+        #             widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        #         ],
+        #         24,
+        #     ),
+        # },
     }
 }
 

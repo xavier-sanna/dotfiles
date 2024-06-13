@@ -1,9 +1,10 @@
 # Nvim
 .config/nvim/lazy-lock.json
 
-{{- if ne .chezmoi.hostname "dev-machine" }}
-.config/qtile
-{{- end }}
+#{{- if ne .chezmoi.hostname "dev-machine" }}
+#.config/qtile
+.config/qtile/**/__pycache__
+#{{- end }}
 
 {{- if ne .chezmoi.hostname "dev-laptop" }}
 .config/hyprland
