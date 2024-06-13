@@ -1,0 +1,7 @@
+[user]
+    email = xavier.sanna@getfluence.com
+    name = Xavier Sanna
+[core]
+    sshCommand = ssh -i ~/.ssh/getfluence
+    filemode = false
+
