@@ -1,0 +1,20 @@
+{
+  "directories": [
+    {
+      "src": "/documents",
+      "dest": "MEGASync/Documents"
+    },
+    {
+      "src": "/books",
+      "dest": "MEGASync/Books"
+    },
+    {
+      "src": "/images",
+      "dest": "MEGASync/Pictures"
+    },
+    {
+      "src": "/dev-station",
+      "dest": "MEGASync/System"
+    }
+  ]
+}
