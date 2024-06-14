@@ -6,6 +6,6 @@
 .config/qtile/**/__pycache__
 #{{- end }}
 
-{{- if ne .chezmoi.hostname "dev-laptop" }}
-.config/hyprland
-{{- end }}
+# {{- if ne .chezmoi.hostname "dev-laptop" }}
+# .config/hyprland
+# {{- end }}
