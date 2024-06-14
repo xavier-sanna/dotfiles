@@ -11,10 +11,15 @@
 #
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
+{{- if eq (output "hostnamectl" "hostname" | trim) "dev-machine" }}
 monitor=DP-1,1920x1080@165,1920x0,1.0
 monitor=HDMI-A-1,1920x1080@60,3840x0,1.0
 monitor=HDMI-A-2,1920x1080@60,0x0,1.0
+{{- end }}
 
+{{- if eq (output "hostnamectl" "hostname" | trim) "dev-laptop" }}
+monitor=,highrr,auto,1.0
+{{- end }}
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
@@ -197,3 +202,5 @@ bind = $mainMod, mouse_up, workspace, e-1
 # Move/resize windows with mainMod + LMB/RMB and dragging
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
+
+# vim: filetype=conf:
