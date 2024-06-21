@@ -41,6 +41,7 @@ return {
 				"eslint",
 				"bashls",
 				"gopls",
+				"jqls",
 			},
 		})
 
