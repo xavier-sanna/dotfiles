@@ -1,0 +1,27 @@
+(deflisten workspaces "hyprland-workspaces _")
+
+(defwidget workspaceWidget [monitor]
+  (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
+    (box :class "workspaces"
+      (for i in {workspaces[monitor].workspaces}
+        (button
+          :onclick "hyprctl dispatch workspace ${i.id}"
+          :class "${i.class}"
+          "${i.name}")))))
+
+(defwidget bar [monitor excl]
+ (centerbox :class {excl == true ? "bar-container-excl" : "bar-container"}
+   (systray)
+   (workspaceWidget :monitor monitor)
+   (systray)))
+
+
+(defwindow topbar [monitor excl]
+  :monitor monitor 
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height {excl == true ? "5px" : "30px"} 
+                      :anchor "top center")
+  :exclusive excl
+  (bar :monitor monitor :excl excl))
