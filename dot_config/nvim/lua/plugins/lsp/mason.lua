@@ -42,6 +42,8 @@ return {
 				"bashls",
 				"gopls",
 				"jqls",
+				"jsonls",
+				"pyright",
 			},
 		})
 
@@ -55,6 +57,11 @@ return {
 				"shellcheck",
 				"luacheck",
 				"golangci-lint",
+				"jsonlint",
+				"fixjson",
+				"flake8",
+				"isort",
+				"black",
 			},
 		})
 	end,

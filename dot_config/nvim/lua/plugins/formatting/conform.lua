@@ -11,6 +11,8 @@ return {
 			php = { "php-cs-fixer" },
 			yaml = { "yamlfmt" },
 			sh = { "shfmt" },
+			json = { "fixjson" },
+			python = { "isort", "black" },
 		},
 		format_on_save = function(bufnr)
 			if slow_format_filetypes[vim.bo[bufnr].filetype] then
