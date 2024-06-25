@@ -1,0 +1,17 @@
+{
+  "firefox": "",
+  "kitty": {
+    "defaultName": "",
+    "extra": [
+      {
+        "title": "spotify_player",
+        "name": "󰓇"
+      },
+      {
+        "title": "^chezmoi edit|(sudo )?vim",
+        "name": ""
+      }
+    ]
+  },
+  "org.gnome.Calculator": ""
+}

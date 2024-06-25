@@ -1,27 +1,28 @@
-(deflisten workspaces "hyprland-workspaces _")
+(deflisten workspaces_data "~/.config/eww/scripts/get-workspaces.sh")
 
 (defwidget workspaceWidget [monitor]
   (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
     (box :class "workspaces"
-      (for i in {workspaces[monitor].workspaces}
+      (for i in {workspaces_data[monitor].workspaces}
         (button
           :onclick "hyprctl dispatch workspace ${i.id}"
-          :class "${i.class}"
+          :class "key-button ${i.active ? 'active' : ''} ${i.empty ? 'empty' : ''}"
           "${i.name}")))))
+       
 
-(defwidget bar [monitor excl]
- (centerbox :class {excl == true ? "bar-container-excl" : "bar-container"}
+(defwidget bar [monitor]
+ (box :class "bar-container"
    (systray)
    (workspaceWidget :monitor monitor)
    (systray)))
 
 
-(defwindow topbar [monitor excl]
+(defwindow topbar [monitor]
   :monitor monitor 
   :geometry (geometry :x "0%"
-                      :y "0%"
+                      :y "1%"
                       :width "100%"
-                      :height {excl == true ? "5px" : "30px"} 
+                      :height "30px" 
                       :anchor "top center")
-  :exclusive excl
-  (bar :monitor monitor :excl excl))
+  :exclusive false
+  (bar :monitor monitor))
