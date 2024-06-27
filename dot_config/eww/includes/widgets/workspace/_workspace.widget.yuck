@@ -1,0 +1,13 @@
+(deflisten workspaces_data "/home/xsanna/.config/eww/includes/widgets/workspace/get-workspaces.sh")
+
+(defwidget _workspace [monitor]
+  (eventbox :onscroll "hyprctl dispatch workspace `echo {} | sed 's/up/+/\' | sed 's/down/-/'`1"
+    (box :class "workspaces"
+      (for i in {workspaces_data[monitor].workspaces}
+        (box :class "workspace-item"
+         (button
+          :onclick "hyprctl dispatch workspace ${i.id}"
+          :class "key-button ${i.active ? 'active' : ''} ${i.empty ? 'empty' : ''}"
+          "${i.name}")
+         (for c in {i.clients}
+          (label :text c)))))))

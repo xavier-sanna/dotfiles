@@ -6,7 +6,7 @@ workspaces() {
 	monitors_json=$(hyprctl monitors -j)
 	binds_json=$(hyprctl binds -j)
 	clients_json=$(hyprctl clients -j)
-	clients_config_json=$(jq -r '.' ~/.config/eww/scripts/clients-config.json)
+	clients_config_json=$(jq -r '.' ~/.config/eww/includes/widgets/workspace/clients-config.json)
 
 	# Build the clients class/title => icon map
 	clients_map=$(jq --argjson config "$clients_config_json" '
@@ -54,7 +54,7 @@ workspaces() {
       name: $item.workspaceString,
       active: false,
       empty: true,
-      clients: $clients[$item.workspaceString]
+      clients: ($clients[$item.workspaceString] // [])
     }]
   )' <<<"$workspacerules_json")
 
@@ -99,7 +99,7 @@ workspaces() {
       )
   )' <<<"$workspaces_stateful")
 
-	echo $workspaces_keys
+	echo "$workspaces_keys" | jq -c
 }
 
 workspaces

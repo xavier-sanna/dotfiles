@@ -1,1 +1,1 @@
-(include "./configs/topbar/eww.yuck")
+(include "./includes/powermenu_toggle/powermenu_toggle.yuck")
