@@ -1,14 +1,14 @@
 #!/bin/bash
 # Parsing configuration
 config_filepath="$XDG_CONFIG_HOME/megasync/settings.json"
-config_data=$(cat $config_filepath)
+config_data=$(cat "$config_filepath")
 
 echo "============================="
 echo "*** Parsing configuration ***"
 echo "============================="
 if [ ! -f "$config_filepath" ]; then
-    echo "ERROR: Configuration file: \$XDG_CONFIG_HOME/megasync/settings.json was not found."
-    exit 1;
+	echo "ERROR: Configuration file: \$XDG_CONFIG_HOME/megasync/settings.json was not found."
+	exit 1
 fi
 
 # check if mega-cmd-server is running
@@ -20,19 +20,16 @@ echo "*** Mega Server ***"
 echo "==================="
 echo "Is mega-cmd-server running?"
 
-if pgrep -x "$MEGASRV" >/dev/null
-then
-  echo "yes"
-  running=true
+if pgrep -x "$MEGASRV" >/dev/null; then
+	echo "yes"
+	running=true
 else
-  echo "no"
+	echo "no"
 fi
 
-
-if [[ "$running" == false ]];
-then
-  echo "Launching megaCMD server..."
-  nohup mega-cmd-server &>/dev/null &
+if [[ "$running" == false ]]; then
+	echo "Launching megaCMD server..."
+	nohup mega-cmd-server &>/dev/null &
 fi
 
 echo " "
@@ -46,19 +43,17 @@ echo "============="
 echo "*** Login ***"
 echo "============="
 while IFS= read -r line; do
-    if [[ "$line" =~ $regxp_login ]]; 
-    then 
-      echo "Already logged in."
-      logged_in=true
-    fi
-done <<< "$output_login"
+	if [[ "$line" =~ $regxp_login ]]; then
+		echo "Already logged in."
+		logged_in=true
+	fi
+done <<<"$output_login"
 
-if [[ "$logged_in" == false ]];
-then
-  echo "Please provide credentials for login."
-  read -p 'Email: ' mega_email
-  read -sp 'Password: ' mega_passwd
-  mega-login "$mega_email" "$mega_passwd"
+if [[ "$logged_in" == false ]]; then
+	echo "Please provide credentials for login."
+	read -rp 'Email: ' mega_email
+	read -rsp 'Password: ' mega_passwd
+	mega-login "$mega_email" "$mega_passwd"
 fi
 
 echo " "
@@ -71,44 +66,46 @@ echo "======================================"
 echo "The following directories will be synced:"
 echo " "
 
-while read directory
-do
-  src=$(echo "$directory" | jq -r .src)
-  dest=$(echo "$directory" | jq -r .dest)
+while read -r directory; do
+	src=$(echo "$directory" | jq -r .src)
+	dest=$(echo "$directory" | jq -r .dest)
 
-  echo "*  [source] ${src} => [destination] ${dest}"
+	echo "*  [source] ${src} => [destination] ${dest}"
 done < <(echo "$config_data" | jq -c '.directories[]')
 
 while true; do
-read -p "Do you want to proceed? (y/n) " yn
+	read -r -p "Do you want to proceed? (y/n) " yn
 
-case $yn in 
-	[yY] ) echo "";
-		break;;
-	[nN] ) echo ""; echo exiting...;
-		exit;;
-	* ) echo invalid response;;
-esac
+	case $yn in
+	[yY])
+		echo ""
+		break
+		;;
+	[nN])
+		echo ""
+		echo exiting...
+		exit
+		;;
+	*) echo invalid response ;;
+	esac
 done
 
-# check if directories from json conf are create
+# check if directories from json conf are created
 # if not create them
 regxp_sync_error='^\[API:err: (((([0-1][0-9])|(2[0-3])):?[0-5][0-9]:?[0-5][0-9]+))\] Failed to sync folder: Already exists. Active sync same path$'
 
-while read directory
-do
-  src=$(echo "$directory" | jq -r .src)
-  dest=$(echo "$directory" | jq -r .dest)
+while read -r directory; do
+	src=$(echo "$directory" | jq -r .src)
+	dest=$(echo "$directory" | jq -r .dest)
 
-  echo "syncing: ${src} => ${dest}"
+	echo "syncing: ${src} => ${dest}"
 
-  if [[ ! -e $dest ]]; then
-    echo "creating folder $dest"
-    mkdir -p "$dest"
-  fi
+	if [[ ! -e $dest ]]; then
+		echo "creating folder $dest"
+		mkdir -p "$dest"
+	fi
 
-  mega-sync "$dest" "$src"
+	mega-sync "$dest" "$src"
 
-  echo " "
+	echo " "
 done < <(echo "$config_data" | jq -c '.directories[]')
-
