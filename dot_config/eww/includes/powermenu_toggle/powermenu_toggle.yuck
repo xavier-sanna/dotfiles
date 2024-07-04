@@ -2,14 +2,22 @@
 (include "./includes/widgets/workspace/_workspace.widget.yuck")        
 
 (defwidget powermenu_layout [monitor]
-  (box :class "layout-box" :space-evenly false :orientation "vertical"
-    (box :valign "start" :space-evenly false :spacing 25
-      (_workspace :monitor monitor))))
+  (box 
+    :class "layout-box" 
+    :space-evenly false 
+    :orientation "horizontal"
+    :halign "center"
+    :valign "center"
+    :width "100%"
+      (_workspace :monitor monitor)))
 
-(defwindow powermenu_toggle [monitor]
+(defwindow powermenu_toggle_workspace [monitor]
   :monitor monitor 
-  :stacking "bg"
-  :geometry (geometry :width "100%" :height "100%") 
+  :stacking "fg"
+  :geometry (geometry :width "50%" 
+             :height "5%" 
+             :anchor "top center"
+             :y "8px")
   :exclusive false
-  :class "powermenu-toggle-window"
+  :namespace "eww-powermenu-toggle"
   (powermenu_layout :monitor monitor))

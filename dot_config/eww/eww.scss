@@ -1,1 +1,7 @@
-@use '~/.config/eww/includes/powermenu_toggle/powermenu_toggle.scss'
+@use './includes/_variables.scss';
+@use './includes/powermenu_toggle/_powermenu_toggle.scss';
+
+* {
+  all: unset;
+  font-family: 'FiraCode Nerd Font';
+}

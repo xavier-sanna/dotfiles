@@ -1,0 +1,10 @@
+@use './_variables.scss';
+@use '../widgets/workspace/_workspace.widget.scss';
+
+.powermenu_toggle_workspace {
+  background: rgba(148, 91, 217, $bg-opacity);
+}
+
+.layout-box {
+  background: rgba(0, 0, 0, 0);
+}

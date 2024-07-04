@@ -164,6 +164,10 @@ windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
 # Firefox extensions
 windowrulev2 = float,class:^firefox$,title:^Extension:
 
+#> Layer rules
+layerrule = blur, eww-powermenu-toggle
+
+#> Bindings
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER
 
@@ -176,9 +180,9 @@ bind = $mainMod, V, togglefloating,
 bindr = $mainMod, SPACE, exec, pkill wofi || $menu
 
 # bar bindings
-binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-bar.sh
-bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-bar.sh
-bindr = , code:135, exec, ~/.config/hypr/scripts/hide-bar.sh || ~/.config/hypr/scripts/show-bar.sh true
+binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-powermenu.sh
+bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-powermenu.sh
+bindr = , code:135, exec, ~/.config/hypr/scripts/hide-powermenu.sh || ~/.config/hypr/scripts/show-powermenu.sh true
 
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, S, togglesplit, # dwindle
