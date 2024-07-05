@@ -10,6 +10,10 @@
       {
         "title": "^chezmoi edit|(sudo )?vim",
         "name": ""
+      },
+      {
+        "title": "btop",
+        "name": ""
       }
     ]
   },

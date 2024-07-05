@@ -11,16 +11,26 @@
       color: white;
       font-weight: 700;
       padding: 5px 10px;
+
+      &.active {
+        background-color: $bg-color-2;
+        /* border-color: #ff2975; */
+        border-color: $border-color-2;
+      }
     }
 
     .workspace-clients {
       border-radius: 5px;
-      padding: 5px 5px 5px 2px;
+      padding: 0px 5px 0px 2px;
 
       .client {
         margin: 0 5px 0 10px;
-        font-size: 1.3rem;
+        font-size: 1.9rem;
         color: $bg-color;
+
+        &.active {
+          color: $bg-color-2;
+        }
       }
     }
 
@@ -34,7 +44,6 @@
 
       .workspace-clients {
         background-color: #fff;
-        /* border: 2px solid $border-color-2; */
         border: 2px solid $border-color;
       }
     }

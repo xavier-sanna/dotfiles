@@ -9,9 +9,10 @@ workspaces() {
 	clients_config_json=$(jq -r '.' ~/.config/eww/includes/widgets/workspace/clients-config.json)
 
 	# Build the clients class/title => icon map
-	clients_map=$(jq --argjson config "$clients_config_json" '
+	clients_map=$(jq --argjson config "$clients_config_json" --argjson workspaces "$workspaces_json" '
 	 reduce .[] as $item (
-	   {}; .[$item.workspace.id|tostring] += [
+   {}; .[$item.workspace.id|tostring] += [{ 
+     name: (
 	       if $config[$item.class] | type == "object"
 	       then
            (
@@ -27,8 +28,17 @@ workspaces() {
 	       else
 	          $config[$item.class]
 	       end
-	     ]
-	 )' <<<"$clients_json")
+     ),
+     lastActive: (
+     if $workspaces | .[] | select((.id == $item.workspace.id) and (.lastwindow == $item.address))
+       then
+         true
+       else
+         empty
+       end // false
+     ) 
+   }]
+	)' <<<"$clients_json")
 
 	# Create the initial structure from monitors
 	initial_structure=$(jq '
