@@ -1,0 +1,24 @@
+(defpoll HOUR :interval "1s" `date +\"%I\"`)
+(defpoll MIN :interval "1s" `date +\"%M\"`)
+(defpoll MER :interval "1s" `date +\"%p\"`)
+(defpoll DAY :interval "1s" `date +\"%A\"`)
+
+(defwidget _clock []
+ (box :class "genwin" 
+      :orientation "h" 
+      :spacing 50 
+      :space-evenly false 
+      :vexpand "false" 
+      :hexpand "false"
+  (box :orientation "h" :spacing 0
+    (label :class "time_hour" :valign "start" :wrap "true" :limit-width 25 :text HOUR)
+    (label :class "time_hour" :valign "end" :wrap "true" :limit-width 25 :text MIN))
+  (box :orientation "v" :spacing 0
+    (label :class "time_hour" :valign "start" :halign "end" :wrap "true" :limit-width 25 :text MER)
+    (label :class "time_hour" :valign "start" :halign "end" :wrap "true" :limit-width 25 :text DAY))))
+
+
+(defwidget _sysinfo [monitor]
+    (box :class "powermenu-toggle-workspaces"
+         :space-evenly false
+      (_clock)))

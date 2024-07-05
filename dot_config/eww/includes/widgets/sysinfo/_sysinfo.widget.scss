@@ -1,6 +1,6 @@
 @use '../../_variables.scss' as *;
 
-.workspaces-widget {
+.powermenu-toggle-workspaces {
   .workspace-item {
     margin: 0 5px;
 
@@ -14,6 +14,7 @@
 
       &.active {
         background-color: $bg-color-2;
+        /* border-color: #ff2975; */
         border-color: $border-color-2;
       }
     }

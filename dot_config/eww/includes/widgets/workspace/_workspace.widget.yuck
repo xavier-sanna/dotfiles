@@ -1,7 +1,7 @@
 (deflisten workspaces_data "/home/xsanna/.config/eww/includes/widgets/workspace/get-workspaces.sh")
 
 (defwidget _workspace [monitor]
-    (box :class "powermenu-toggle-workspaces"
+    (box :class "workspaces-widget"
          :space-evenly false
       (for i in {workspaces_data[monitor].workspaces}
         (box :class "workspace-item ${arraylength(i.clients) > 1 ? 'has-clients' : ''} ${arraylength(i.clients) == 1 ? 'has-single-client' : ''}"

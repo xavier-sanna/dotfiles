@@ -6,11 +6,15 @@
   box-shadow: unset;
 }
 
-.powermenu-toggle-layout-box {
-  margin: 1rem 0 1rem 0;
+.powermenu-top-layout-box,
+.powermenu-bottom-layout-box {
   padding: 1rem;
   background: rgba($bg-color-r, $bg-color-g, $bg-color-b, $bg-opacity);
   border: 2px solid $bg-color-2;
   border-radius: 15px 15px;
   box-shadow: 4px 4px rgba($border-color-r, $border-color-g, $border-color-b);
+}
+
+.powermenu-top-layout-box {
+  margin-top: 8px;
 }
