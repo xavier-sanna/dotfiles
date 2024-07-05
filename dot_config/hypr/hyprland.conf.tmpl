@@ -81,8 +81,9 @@ general {
     gaps_in = 5
     gaps_out = 15 
     border_size = 2
-    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-    col.inactive_border = rgba(595959aa)
+    col.active_border = rgba(ffd319ee) rgba(ff901fee) 45deg
+    col.inactive_border = rgba(ff2975aa) rgba(595959aa) 45deg
+
 
     layout = dwindle
 
@@ -166,6 +167,7 @@ windowrulev2 = float,class:^firefox$,title:^Extension:
 
 #> Layer rules
 layerrule = blur, eww-powermenu-toggle
+layerrule = ignorezero, eww-powermenu-toggle
 
 #> Bindings
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more

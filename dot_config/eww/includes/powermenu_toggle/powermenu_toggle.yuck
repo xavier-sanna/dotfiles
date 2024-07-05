@@ -3,18 +3,15 @@
 
 (defwidget powermenu_layout [monitor]
   (box 
-    :class "layout-box" 
-    :space-evenly false 
-    :orientation "horizontal"
+    :class "powermenu-toggle-layout-box" 
     :halign "center"
-    :valign "center"
-    :width "100%"
+    :orientation "horizontal"
       (_workspace :monitor monitor)))
 
 (defwindow powermenu_toggle_workspace [monitor]
   :monitor monitor 
   :stacking "fg"
-  :geometry (geometry :width "50%" 
+  :geometry (geometry :width "100%" 
              :height "5%" 
              :anchor "top center"
              :y "8px")

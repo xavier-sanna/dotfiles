@@ -1,10 +1,14 @@
-@use './_variables.scss';
-@use '../widgets/workspace/_workspace.widget.scss';
+@use '../../_variables.scss' as *;
 
 .powermenu_toggle_workspace {
-  background: rgba(148, 91, 217, $bg-opacity);
+  box-shadow: unset;
 }
 
-.layout-box {
-  background: rgba(0, 0, 0, 0);
+.powermenu-toggle-layout-box {
+  margin: 1rem 0 1rem 0;
+  padding: 1rem;
+  background: rgba($bg-color-r, $bg-color-g, $bg-color-b, $bg-opacity);
+  border: 2px solid $bg-color-2;
+  border-radius: 15px 15px;
+  box-shadow: 4px 4px rgba($border-color-r, $border-color-g, $border-color-b);
 }

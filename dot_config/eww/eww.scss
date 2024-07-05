@@ -1,7 +1,7 @@
-@use './includes/_variables.scss';
 @use './includes/powermenu_toggle/_powermenu_toggle.scss';
+@use './includes/widgets/workspace/_workspace.widget.scss';
 
 * {
   all: unset;
-  font-family: 'FiraCode Nerd Font';
+  font-family: 'FiraCode Nerd Font Mono';
 }

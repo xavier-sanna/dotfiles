@@ -1,7 +1,7 @@
 {
-  "firefox": "",
+  "firefox": "",
   "kitty": {
-    "defaultName": "",
+    "defaultName": "",
     "extra": [
       {
         "title": "spotify_player",
@@ -9,7 +9,7 @@
       },
       {
         "title": "^chezmoi edit|(sudo )?vim",
-        "name": ""
+        "name": ""
       }
     ]
   },
