@@ -1,40 +1,47 @@
 ; heavily inspired by https://dharmx.is-a.dev/eww-powermenu/
 (include "./includes/widgets/workspace/_workspace.widget.yuck")        
-(include "./includes/widgets/sysinfo/_sysinfo.widget.yuck")        
+(include "./includes/widgets/clock/_clock.widget.yuck")        
 
 (defwidget powermenu_layout [monitor]
   (box 
     :class "powermenu-layout-box" 
     :orientation "vertical"
-      (top_layout :monitor monitor)
-      (bottom_layout :monitor monitor)))
+      (top_layout :monitor monitor)))
+      
 
+;; (defwidget top_layout [monitor]
+;;   (box 
+;;     :class "powermenu-top-layout-box" 
+;;     :valign "start"
+;;     :orientation "horizontal"
+;;     :active true
+;;            (_workspace :monitor monitor)))
     
 (defwidget top_layout [monitor]
-  (box 
+  (centerbox 
     :class "powermenu-top-layout-box" 
-    :halign "center"
     :valign "start"
-
     :orientation "horizontal"
     :active true
-      (_workspace :monitor monitor)))
+      (box :class "bar-element left"
+           (systray :class "widget-box systray"
+                    :halign "start"
+                    :spacing 10
+                    :space-evenly true
+                    :icon-size 20))
+      (box :class "bar-element center"
+           (_workspace :monitor monitor))
+      (box :class "bar-element right"
+           (_clock :halign "end"))))
+      
 
-(defwidget bottom_layout [monitor]
-  (box 
-    :class "powermenu-bottom-layout-box" 
-    :halign "center"
-    :valign "end"
-    :orientation "horizontal"
-    :active true
-      (_sysinfo :monitor monitor)))
 
 
 (defwindow powermenu_toggle [monitor]
   :monitor monitor 
   :stacking "fg"
   :geometry (geometry :width "100%" 
-             :height "100%") 
+             :height "8%") 
              
   :exclusive false
   :namespace "eww-powermenu-toggle"

@@ -7,14 +7,17 @@
     .key-button {
       background-color: $bg-color;
       border: 2px solid $border-color;
+      box-shadow: 0 0 4px 1px $border-color-2;
       border-radius: 10px;
       color: white;
       font-weight: 700;
       padding: 5px 10px;
+      text-shadow: 0 0 3px #fff;
 
       &.active {
         background-color: $bg-color-2;
         border-color: $border-color-2;
+        box-shadow: 0 0 4px 1px $border-color;
       }
     }
 
@@ -26,9 +29,11 @@
         margin: 0 5px 0 10px;
         font-size: 1.9rem;
         color: $bg-color;
+        text-shadow: 0 0 3px $bg-color;
 
         &.active {
           color: $bg-color-2;
+          text-shadow: 0 0 3px $bg-color-2;
         }
       }
     }
@@ -44,6 +49,7 @@
       .workspace-clients {
         background-color: #fff;
         border: 2px solid $border-color;
+        box-shadow: 0 0 4px 1px $border-color-2;
       }
     }
   }

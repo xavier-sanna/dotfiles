@@ -1,0 +1,29 @@
+@use '../../_variables.scss' as *;
+
+.clock-widget {
+  .sub-container {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $border-color;
+    margin: 0 5px;
+    text-shadow: 0 0 3px $border-color;
+    background: $bg-color;
+    border: 2px solid $border-color;
+    box-shadow: 0 0 4px 1px $border-color-2;
+    border-radius: 10px;
+    padding: 0 5px 0 5px;
+  }
+
+  .time-container {
+    .time-item {
+      letter-spacing: 2px;
+    }
+  }
+
+  .icon-container {
+    .icon {
+      letter-spacing: 2px;
+      font-size: 2rem;
+    }
+  }
+}

@@ -26,7 +26,7 @@ workspaces() {
              end
            ) // $config[$item.class].defaultName
 	       else
-	          $config[$item.class]
+	          $config[$item.class] // $config["defaultName"]
 	       end
      ),
      lastActive: (
