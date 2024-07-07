@@ -1,25 +1,16 @@
-; heavily inspired by https://dharmx.is-a.dev/eww-powermenu/
+; inspired by https://dharmx.is-a.dev/eww-powermenu/
 (include "./includes/widgets/workspace/_workspace.widget.yuck")        
 (include "./includes/widgets/clock/_clock.widget.yuck")        
 
-(defwidget powermenu_layout [monitor]
+(defwidget topbar_layout [monitor]
   (box 
-    :class "powermenu-layout-box" 
+    :class "topbar-layout-box" 
     :orientation "vertical"
       (top_layout :monitor monitor)))
       
-
-;; (defwidget top_layout [monitor]
-;;   (box 
-;;     :class "powermenu-top-layout-box" 
-;;     :valign "start"
-;;     :orientation "horizontal"
-;;     :active true
-;;            (_workspace :monitor monitor)))
-    
 (defwidget top_layout [monitor]
   (centerbox 
-    :class "powermenu-top-layout-box" 
+    :class "topbar-top-layout-box" 
     :valign "start"
     :orientation "horizontal"
     :active true
@@ -33,17 +24,14 @@
            (_workspace :monitor monitor))
       (box :class "bar-element right"
            (_clock :halign "end"))))
-      
 
-
-
-(defwindow powermenu_toggle [monitor]
+(defwindow topbar_toggle [monitor]
   :monitor monitor 
   :stacking "fg"
   :geometry (geometry :width "100%" 
              :height "8%") 
              
   :exclusive false
-  :namespace "eww-powermenu-toggle"
-  (powermenu_layout :monitor monitor))
+  :namespace "eww-topbar-toggle"
+  (topbar_layout :monitor monitor))
   

@@ -3,11 +3,11 @@
 @use '../widgets/workspace/_workspace.widget.scss';
 @use '../widgets/clock/_clock.widget.scss';
 
-.powermenu_toggle_workspace {
+.topbar_toggle_workspace {
   box-shadow: unset;
 }
 
-.powermenu-top-layout-box {
+.topbar-top-layout-box {
   margin-top: 8px;
 
   .widget-box {
@@ -19,7 +19,7 @@
   }
 }
 
-.powermenu-bottom-layout-box {
+.topbar-bottom-layout-box {
   margin-bottom: 12px;
 }
 
@@ -32,14 +32,6 @@
     margin-right: 14px;
   }
 }
-
-/* .systray menu { */
-/*   background: rgba($bg-color-r, $bg-color-g, $bg-color-b, .8); */
-/*   border: 2px solid $bg-color-2; */
-/*   border-radius: 15px 15px; */
-/*   box-shadow: 4px 4px $border-color; */
-/* } */
-
 
 /* https://github.com/elkowar/eww/issues/1067 */
 .systray menu {
