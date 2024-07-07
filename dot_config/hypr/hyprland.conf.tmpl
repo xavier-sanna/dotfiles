@@ -37,10 +37,8 @@ monitor=,highrr,auto,1.0
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
-# exec-once = waybar & hyprpaper & firefox
 exec-once = /usr/lib/polkit-kde-authentication-agent-1
 exec-once = ~/.local/bin/eww daemon
-# exec-once = waybar
 exec-once = udiskie --tray
 exec-once = nm-applet
 exec-once = mega-cmd-server
@@ -51,7 +49,7 @@ exec-once = mpvpaper -o "no-audio --loop-playlist --vo=gpu-next" '*' ~/Videos/ph
 
 # Set programs that you use
 $terminal = kitty
-$fileManager = dolphin
+$fileManager = kitty yazi
 $menu = wofi --allow-images --show drun
 
 # Some default env vars.
@@ -176,10 +174,10 @@ $mainMod = SUPER
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, RETURN, exec, $terminal
 bind = $mainMod, Q, killactive, 
-bind = $mainMod, M, exit, 
 bind = $mainMod, E, exec, $fileManager
-bind = $mainMod, V, togglefloating, 
+bind = $mainMod, F, togglefloating, 
 bindr = $mainMod, SPACE, exec, pkill wofi || $menu
+# bind = $mainMod, M, exit, 
 
 # bar bindings
 binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-powermenu.sh
