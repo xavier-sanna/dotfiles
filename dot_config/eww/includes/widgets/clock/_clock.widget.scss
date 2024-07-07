@@ -14,16 +14,9 @@
     padding: 0 5px 0 5px;
   }
 
-  .time-container {
-    .time-item {
-      letter-spacing: 2px;
-    }
+  .time-container .time-item,
+  .date-container .date-item {
+    letter-spacing: 1px;
   }
 
-  .icon-container {
-    .icon {
-      letter-spacing: 2px;
-      font-size: 2rem;
-    }
-  }
 }

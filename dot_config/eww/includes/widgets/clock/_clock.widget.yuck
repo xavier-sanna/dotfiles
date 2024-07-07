@@ -11,5 +11,5 @@
       (box :class "sub-container time-container"
        (label :class "time-item" :valign "center" :wrap false :text TIME))
       (box :class "sub-container date-container"
-       (label :class "date-item time-hour" :valign "center" :wrap "true" :text DATE))))
+       (label :class "date-item" :valign "center" :wrap false :text DATE))))
       
