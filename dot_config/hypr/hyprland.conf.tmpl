@@ -44,7 +44,9 @@ exec-once = ~/.local/bin/eww daemon
 exec-once = udiskie --tray
 exec-once = nm-applet
 exec-once = mega-cmd-server
+{{- if eq $realHostname "dev-machine" }}
 exec-once = mpvpaper -o "no-audio --loop-playlist --vo=gpu-next" '*' ~/Videos/philippines-synthwave-wallpaper.mp4
+{{- end }}
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf
