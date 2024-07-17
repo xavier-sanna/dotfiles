@@ -26,3 +26,7 @@ alias hmglabs:niglo="cd $HOME/projects/hmglabs/niglo"
 
 # Go Task
 alias task="/usr/bin/go-task"
+
+# Atac
+alias atac="$HOME/.config/atac/launch-script.sh"
+alias oatac="/usr/bin/atac"
