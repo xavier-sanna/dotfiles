@@ -1,6 +1,8 @@
 # See https://wiki.hyprland.org/Configuring/Monitors/
+{{- $realHostname := output "hostnamectl" "hostname" | trim -}}
+
 # Monitors
-{{- if eq (output "hostnamectl" "hostname" | trim) "dev-machine" }}
+{{- if eq $realHostname "dev-machine" }}
 monitor = DP-1,1920x1080@165,1920x0,1.0
 monitor = HDMI-A-1,1920x1080@60,3840x0,1.0
 monitor = HDMI-A-2,1920x1080@60,0x0,1.0
@@ -30,7 +32,7 @@ workspace = 21, monitor:HDMI-A-1
 workspace = 22, monitor:HDMI-A-1
 {{- end }}
 
-{{- if eq (output "hostnamectl" "hostname" | trim) "dev-laptop" }}
+{{- if eq $realHostname "dev-laptop" }}
 monitor=,highrr,auto,1.0
 {{- end }}
 
@@ -180,9 +182,9 @@ bindr = $mainMod, SPACE, exec, pkill wofi || $menu
 # bind = $mainMod, M, exit, 
 
 # bar bindings
-binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-topbar.sh
-bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-topbar.sh
-bindr = , code:135, exec, ~/.config/hypr/scripts/hide-topbar.sh || ~/.config/hypr/scripts/show-topbar.sh true
+binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh
+bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh
+bindr = , code:135, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh || ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh true
 
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, S, togglesplit, # dwindle

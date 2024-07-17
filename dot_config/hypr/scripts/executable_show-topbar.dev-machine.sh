@@ -13,3 +13,5 @@ fi
 	--arg tbt_primary:monitor="0" \
 	--arg tbt_second:monitor="1" \
 	--arg tbt_third:monitor="2"
+
+# vim: filetype=sh:
