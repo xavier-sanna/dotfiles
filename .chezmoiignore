@@ -1,11 +1,12 @@
+{{- $realHostname := output "hostnamectl" "hostname" | trim -}}
+
 # Nvim
 .config/nvim/lazy-lock.json
 
-#{{- if ne .chezmoi.hostname "dev-machine" }}
-#.config/qtile
+# Qtile
 .config/qtile/**/__pycache__
-#{{- end }}
 
-# {{- if ne .chezmoi.hostname "dev-laptop" }}
-# .config/hyprland
-# {{- end }}
+# Hyprland
+{{- if eq $realHostname "dev-machine" -}}
+.config/hypr/hyprpaper.conf
+{{- end -}}
