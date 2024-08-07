@@ -39,10 +39,6 @@ return {
 
 		local wk = require("which-key")
 
-		wk.register({
-			["<leader>x"] = {
-				name = "trouble",
-			},
-		})
+		wk.add({ "<leader>x", group = "trouble" })
 	end,
 }

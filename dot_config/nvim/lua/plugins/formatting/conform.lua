@@ -54,10 +54,6 @@ return {
 
 		local wk = require("which-key")
 
-		wk.register({
-			["<leader>m"] = {
-				name = "formatting",
-			},
-		})
+		wk.add({ "<leader>m", group = "formatting" })
 	end,
 }

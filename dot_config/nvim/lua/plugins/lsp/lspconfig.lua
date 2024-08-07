@@ -70,9 +70,7 @@ return {
 
 		local wk = require("which-key")
 
-		wk.register({
-			["<leader>r"] = { name = "lsp" },
-		})
+		wk.add({ "<leader>r", group = "lsp" })
 
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()

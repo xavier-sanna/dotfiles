@@ -9,11 +9,7 @@ return {
 		-- keymaps
 		local wk = require("which-key")
 
-		wk.register({
-			["<leader>s"] = {
-				name = "search",
-			},
-		})
+		wk.add({ "<leader>s", group = "search" })
 
 		vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
 			desc = "Toggle Spectre",

@@ -61,8 +61,6 @@ return {
 		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find keymaps" })
 
 		-- which-key
-		wk.register({
-			["<leader>f"] = { name = "+find" },
-		})
+		wk.add({ "<leader>f", group = "+find" })
 	end,
 }

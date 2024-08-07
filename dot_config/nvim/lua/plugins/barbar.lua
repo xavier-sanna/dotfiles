@@ -100,8 +100,6 @@ return {
 		-- which-key
 		local wk = require("which-key")
 
-		wk.register({
-			["<leader>b"] = { name = "+buffer" },
-		})
+		wk.add({ "<leader>b", name = "+buffer" })
 	end,
 }
