@@ -56,7 +56,7 @@ exec-once = udiskie --tray
 exec-once = nm-applet
 exec-once = mega-cmd-server
 {{- if eq $realHostname "dev-machine" }}
-exec-once = mpvpaper -o "no-audio --loop-playlist --vo=gpu-next" '*' ~/Videos/philippines-synthwave-wallpaper.mp4
+exec-once = mpvpaper -o "no-audio --loop-playlist --vo=gpu-next" '*' ~/.config/hypr/live-wallpapers/philippines-synthwave-wallpaper.mp4
 {{- end }}
 {{- if eq $realHostname "dev-laptop" }}
 exec-once = hyprpaper

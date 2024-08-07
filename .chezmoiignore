@@ -5,8 +5,3 @@
 
 # Qtile
 .config/qtile/**/__pycache__
-
-# Hyprland
-{{- if eq $realHostname "dev-machine" -}}
-.config/hypr/hyprpaper.conf
-{{- end -}}
