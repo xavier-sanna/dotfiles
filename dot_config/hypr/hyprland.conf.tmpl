@@ -68,11 +68,17 @@ exec-once = hyprpaper
 # Set programs that you use
 $terminal = kitty
 $fileManager = kitty yazi
+# $screenshot = QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=Hyprland flameshot gui
+$screenshot = grimblast copy area
 $menu = wofi --allow-images --show drun
 
 # Some default env vars.
-env = XCURSOR_SIZE,24
-env = QT_QPA_PLATFORMTHEME,qt5ct # change to qt6ct if you have that
+# env = XCURSOR_SIZE,24
+# env = QT_QPA_PLATFORMTHEME,qt5ct # change to qt6ct if you have that
+
+cursor {
+  no_hardware_cursors = true
+}
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
@@ -172,6 +178,14 @@ device {
 # kitty
 windowrule = opacity 1 override 0.8 override,^(kitty)$ # Example windowrule v2
 
+# flameshot
+# windowrule=fullscreenstate, 0 2, flameshot
+# windowrule=float,flameshot
+# windowrule=monitor 0,flameshot
+# windowrule=workspace 0,flameshot
+# windowrule=move -1920 0,flameshot
+# windowrule=stayfocused,flameshot
+
 # gnome calc
 windowrulev2 = float,class:org.gnome.Calculator
 
@@ -188,6 +202,9 @@ layerrule = ignorezero, eww-topbar-toggle
 #> Bindings
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER
+
+# flameshot
+bind = , Print, exec, $screenshot
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, RETURN, exec, $terminal
