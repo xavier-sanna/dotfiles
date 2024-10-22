@@ -65,13 +65,13 @@ return {
 		indent = { enable = true },
 
 		-- enable autotagging (w/ nvim-ts-autotag plugin)
-		autotag = {
-			enable = true,
-			enable_rename = true,
-			enable_close = true,
-			enable_close_on_slash = true,
-			filetypes = { "html", "xml" },
-		},
+		-- autotag = {
+		-- 	enable = true,
+		-- 	enable_rename = true,
+		-- 	enable_close = true,
+		-- 	enable_close_on_slash = true,
+		-- 	filetypes = { "html", "xml" },
+		-- },
 
 		-- ensure these language parsers are installed
 		ensure_installed = install_list,

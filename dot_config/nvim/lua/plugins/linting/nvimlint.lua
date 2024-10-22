@@ -9,6 +9,7 @@ return {
 			sh = { "shellcheck" },
 			json = { "jsonlint" },
 			python = { "flake8" },
+			php = { "phpstan", "phpmd" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

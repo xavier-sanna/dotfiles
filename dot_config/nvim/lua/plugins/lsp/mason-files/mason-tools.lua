@@ -1,0 +1,18 @@
+return {
+	"prettier",
+	"stylua",
+	"yamllint",
+	"yamlfmt",
+	"shfmt",
+	"shellcheck",
+	"luacheck",
+	"golangci-lint",
+	"jsonlint",
+	"fixjson",
+	"flake8",
+	"isort",
+	"black",
+	"phpstan",
+	"phpmd",
+	"php-cs-fixer",
+}

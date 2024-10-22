@@ -8,15 +8,6 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
-
-		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
 		local keymap = vim.keymap -- for conciseness
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -72,9 +63,6 @@ return {
 
 		wk.add({ "<leader>r", group = "lsp" })
 
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -82,25 +70,5 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-
-		local handle_setup = function(server_name, extra_config)
-			local config = {
-				capabilities = capabilities,
-			}
-
-			if extra_config ~= nil then
-				config = { table.unpack(config), table.unpack(extra_config) }
-			end
-
-			lspconfig[server_name].setup(config)
-		end
-
-		mason_lspconfig.setup_handlers({
-			handle_setup,
-			["gopls"] = handle_setup("gopls", require("plugins.lsp.settings.gopls")),
-			["lua_ls"] = handle_setup("lua_ls", require("plugins.lsp.settings.lua-ls")),
-			["yamlls"] = handle_setup("yamlls", require("plugins.lsp.settings.yamlls")),
-			["intelephense"] = handle_setup("intelephense", require("plugins.lsp.settings.intelephense")),
-		})
 	end,
 }
