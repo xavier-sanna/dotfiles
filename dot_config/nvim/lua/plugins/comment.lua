@@ -1,5 +1,16 @@
 return {
 	"numToStr/Comment.nvim",
+	dependencies = {
+		{
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			opts = {
+				enable_autocmd = false,
+			},
+			config = function(_, opts)
+				require("ts_context_commentstring").setup(opts)
+			end,
+		},
+	},
 	lazy = false,
 	opts = {
 		---Add a space b/w comment and the line
@@ -45,6 +56,9 @@ return {
 		post_hook = nil,
 	},
 	config = function(_, opts)
+		local prehook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
+		opts["pre_hook"] = prehook
+
 		require("Comment").setup(opts)
 	end,
 }
