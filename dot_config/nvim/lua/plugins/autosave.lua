@@ -5,19 +5,12 @@ return {
 
 	opts = {
 		enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
-		execution_message = {
-			enabled = true,
-			message = function() -- message to print on save
-				return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
-			end,
-			dim = 0.18, -- dim the color of `message`
-			cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
-		},
 		trigger_events = { -- See :h events
 			immediate_save = { "BufLeave", "FocusLost" }, -- vim events that trigger an immediate save
 			defer_save = { "InsertLeave", "TextChanged" }, -- vim events that trigger a deferred save (after `debounce_delay`)
-			cancel_defered_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
+			cancel_deferred_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
 		},
+
 		-- function that takes the buffer handle and determines whether to save the current buffer or not
 		-- return true: if buffer is ok to be saved
 		-- return false: if it's not ok to be saved
@@ -41,6 +34,8 @@ return {
 				if callback_opts.data.saved_buffer ~= nil then
 					local filename = vim.api.nvim_buf_get_name(callback_opts.data.saved_buffer)
 					local username = vim.env.USER
+
+					print("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
 
 					if filename:match("^/home/" .. username .. "/.local/share/chezmoi/.*") then
 						vim.cmd('silent ! chezmoi apply --source-path "%"')
