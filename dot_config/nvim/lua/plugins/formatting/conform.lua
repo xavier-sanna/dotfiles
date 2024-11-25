@@ -13,6 +13,7 @@ return {
 			sh = { "shfmt" },
 			json = { "fixjson" },
 			python = { "isort", "black" },
+			-- twig = { "twig-cs-fixer" },
 		},
 		format_on_save = function(bufnr)
 			if slow_format_filetypes[vim.bo[bufnr].filetype] then

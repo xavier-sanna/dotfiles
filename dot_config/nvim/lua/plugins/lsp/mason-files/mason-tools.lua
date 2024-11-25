@@ -15,4 +15,5 @@ return {
 	"phpstan",
 	"phpmd",
 	"php-cs-fixer",
+	-- "twig-cs-fixer",
 }

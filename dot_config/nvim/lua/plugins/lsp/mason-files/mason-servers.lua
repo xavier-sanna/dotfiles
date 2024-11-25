@@ -16,4 +16,5 @@ return {
 	jqls = {},
 	jsonls = require("plugins.lsp.settings.jsonls"),
 	pyright = {},
+	-- twiggy_language_server = {},
 }
