@@ -1,6 +1,8 @@
 # Misc
 alias sudo="sudo "
 alias c="clear"
+alias rm="trash"
+alias orm="/usr/bin/rm"
 
 # VIM
 alias vim="/usr/bin/nvim"
@@ -13,16 +15,6 @@ alias tree="lsd --tree"
 
 # Projects
 alias projects="cd $HOME/projects"
-
-# Getfluence
-alias getfluence="cd $HOME/projects/getfluence"
-alias getfluencev2core="cd $HOME/projects/getfluence/getfluence-v2-core"
-alias getfluencev2front="cd $HOME/projects/getfluence/getfluence-v2-front"
-
-# HMGLabs
-alias hmglabs="cd $HOME/projects/hmglabs"
-alias hmglabs:readabowl="cd $HOME/projects/hmglabs/readabowl"
-alias hmglabs:niglo="cd $HOME/projects/hmglabs/niglo"
 
 # Go Task
 alias task="/usr/bin/go-task"
