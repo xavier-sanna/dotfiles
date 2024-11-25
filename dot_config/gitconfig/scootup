@@ -1,6 +1,0 @@
-[user]
-    email = 1360107-xavier.sanna@users.noreply.gitlab.com
-    name = Xavier Sanna
-[core]
-    sshCommand = ssh -i ~/.ssh/gitlab_devlaptop
-    filemode = false
