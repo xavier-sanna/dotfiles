@@ -49,7 +49,11 @@ return {
 		mason_lspconfig.setup_handlers({
 			function(server_name)
 				local server_config = servers[server_name]
-				local merged_config = vim.tbl_extend("force", default_config, { settings = server_config })
+        if server_config == nil then
+          server_config = {}
+        end
+
+				local merged_config = vim.tbl_extend("force", default_config, server_config)
 				lspconfig[server_name].setup(merged_config)
 			end,
 		})

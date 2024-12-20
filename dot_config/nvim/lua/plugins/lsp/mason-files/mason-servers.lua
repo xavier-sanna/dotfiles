@@ -1,9 +1,9 @@
 return {
-	intelephense = require("plugins.lsp.settings.intelephense"),
+	-- intelephense = require("plugins.lsp.settings.intelephense"),
 	phpactor = require("plugins.lsp.settings.phpactor"),
 	ts_ls = {},
 	html = {},
-	tailwindcss = {},
+	tailwindcss = require("plugins.lsp.settings.tailwindcss"),
 	lua_ls = require("plugins.lsp.settings.lua-ls"),
 	graphql = {},
 	prismals = {},

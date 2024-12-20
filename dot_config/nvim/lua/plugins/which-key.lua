@@ -173,10 +173,14 @@ return {
 		},
 		debug = false, -- enable wk.log in the current directory
 	},
-	config = function(_, opts)
-		local wk = require("which-key")
-		wk.setup(opts)
+	keys = {
 
-		wk.add({})
-	end,
+		{
+			"<leader>?",
+			function()
+				require("which-key").show({ global = false })
+			end,
+			desc = "Buffer Local Keymaps (which-key)",
+		},
+	},
 }
