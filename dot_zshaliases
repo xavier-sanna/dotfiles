@@ -15,6 +15,9 @@ alias tree="lsd --tree"
 
 # Projects
 alias projects="cd $HOME/projects"
+alias loopforge="cd $HOME/projects/loopforge"
+alias organilog="cd $HOME/projects/organilog"
+alias organilog:user="cd $HOME/projects/organilog/organilog_user/"
 
 # Go Task
 alias task="/usr/bin/go-task"
