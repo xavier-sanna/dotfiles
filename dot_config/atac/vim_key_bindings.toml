@@ -1,4 +1,5 @@
 # Please avoid using Ctrl-v, it will paste your clipboard and trigger many unwanted event
+
 [keybindings.main_menu]
 exit = "q" # ctrl-c is implemented by default
 
@@ -16,14 +17,16 @@ display_help = "Shift-h" # Take care to not overlap other inputs, the help can b
 
 # Collection name, request name, URL, Header, Query param, Basic Auth, Bearer Token
 [keybindings.generic.text_inputs.text_input]
+confirm = "Enter"
 cancel = "Esc"
-validate = "Enter"
 
 delete_backward = "Delete"
 delete_forward = "Backspace"
 
 move_cursor_left = "Ctrl-h"
 move_cursor_right = "Ctrl-l"
+move_cursor_line_start = "Home"
+move_cursor_line_end = "End"
 
 # Request body
 [keybindings.generic.text_inputs]
