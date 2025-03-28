@@ -7,8 +7,8 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			javascript = { "prettierd" },
-			javascriptreact = { "prettierd" },
-			typescriptreact = { "prettierd" },
+			javascriptreact = { "prettierd", "prettier" },
+			typescriptreact = { "prettierd", "prettier" },
 			php = { "php-cs-fixer" },
 			yaml = { "yamlfmt" },
 			sh = { "shfmt" },
