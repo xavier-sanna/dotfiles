@@ -84,6 +84,13 @@ esac
 # Atac
 export ATAC_KEY_BINDINGS="$HOME/.config/atac/vim_key_bindings.toml"
 
+# Rye
+source "$HOME/.rye/env"
+
+# Phpbrew
+[[ -e ~/.phpbrew/bashrc ]] && source "$HOME/.phpbrew/bashrc"
+export PHPBREW_SET_PROMPT=1
+
 # Eventually export PATH
 export PATH
 
