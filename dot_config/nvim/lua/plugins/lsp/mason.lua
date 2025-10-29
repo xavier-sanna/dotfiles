@@ -46,16 +46,18 @@ return {
 		}
 
 		local lspconfig = require("lspconfig")
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				local server_config = servers[server_name]
-        if server_config == nil then
-          server_config = {}
-        end
+		mason_lspconfig.setup({
+			handlers = {
+				function(server_name)
+					local server_config = servers[server_name]
+					if server_config == nil then
+						server_config = {}
+					end
 
-				local merged_config = vim.tbl_extend("force", default_config, server_config)
-				lspconfig[server_name].setup(merged_config)
-			end,
+					local merged_config = vim.tbl_extend("force", default_config, server_config)
+					lspconfig[server_name].setup(merged_config)
+				end,
+			},
 		})
 	end,
 }

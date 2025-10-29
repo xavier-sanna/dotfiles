@@ -34,6 +34,7 @@ local install_list = {
 	"yaml",
 	"yuck",
 	"hcl",
+	"asm",
 }
 
 return {

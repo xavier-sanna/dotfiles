@@ -1,6 +1,6 @@
 return {
-	-- intelephense = require("plugins.lsp.settings.intelephense"),
-	phpactor = require("plugins.lsp.settings.phpactor"),
+	intelephense = require("plugins.lsp.settings.intelephense"),
+	-- phpactor = require("plugins.lsp.settings.phpactor"),
 	ts_ls = {},
 	html = {},
 	tailwindcss = require("plugins.lsp.settings.tailwindcss"),
@@ -15,6 +15,8 @@ return {
 	gopls = require("plugins.lsp.settings.gopls"),
 	jqls = {},
 	jsonls = require("plugins.lsp.settings.jsonls"),
-	pyright = {},
+	basedpyright = {},
+	asm_lsp = {},
+	terraformls = {},
 	-- twiggy_language_server = {},
 }

@@ -7,14 +7,15 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			javascript = { "prettierd" },
-			javascriptreact = { "prettierd", "prettier" },
-			typescriptreact = { "prettierd", "prettier" },
+			javascriptreact = { "prettierd" },
+			typescriptreact = { "prettierd" },
 			php = { "php-cs-fixer" },
 			yaml = { "yamlfmt" },
 			sh = { "shfmt" },
 			json = { "fixjson" },
 			python = { "isort", "black" },
-			-- twig = { "twig-cs-fixer" },
+			css = { "prettierd" },
+			hcl = { "hcl" },
 		},
 		format_on_save = function(bufnr)
 			if slow_format_filetypes[vim.bo[bufnr].filetype] then

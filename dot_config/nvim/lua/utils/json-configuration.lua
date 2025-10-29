@@ -1,7 +1,8 @@
 ---@diagnostic disable: need-check-nil
 local json_conf = {}
 
-local config_path = vim.fn.stdpath("state") .. "/user-config.json"
+local extra_filename = vim.g.vscode and ".vscode" or ""
+local config_path = vim.fn.stdpath("state") .. "/user-config" .. extra_filename .. ".json"
 
 local DEFAULT_VALUES = {
 	colorscheme = "default",
