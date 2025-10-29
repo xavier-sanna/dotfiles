@@ -50,11 +50,12 @@ workspace = 10, monitor:eDP-1
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
-exec-once = /usr/lib/polkit-kde-authentication-agent-1
+# exec-once = /usr/lib/polkit-kde-authentication-agent-1
+exec-once = systemctl --user enable --now hyprpolkitagent.service
 exec-once = ~/.local/bin/eww daemon
 exec-once = udiskie --tray
 exec-once = nm-applet
-exec-once = mega-cmd-server
+#exec-once = mega-cmd-server
 {{- if eq $realHostname "dev-machine" }}
 # exec-once = mpvpaper -o "no-audio --loop-playlist --vo=gpu-next" '*' ~/.config/hypr/live-wallpapers/alone-on-the-planet-moewalls-com.mp4
 exec-once = hyprpaper
@@ -157,11 +158,6 @@ master {
     new_status = master
 }
 
-gestures {
-    # See https://wiki.hyprland.org/Configuring/Variables/ for more
-    workspace_swipe = off
-}
-
 misc {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
     force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
@@ -177,7 +173,7 @@ device {
 #>V1 Window rules
 
 # kitty
-windowrule = opacity 1 override 0.8 override,^(kitty)$ # Example windowrule v2
+windowrule = opacity 1 override 0.8 override,class:^(kitty)$ # Example windowrule v2
 
 # flameshot
 # windowrule=fullscreenstate, 0 2, flameshot
