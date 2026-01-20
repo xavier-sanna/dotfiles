@@ -50,8 +50,7 @@ workspace = 10, monitor:eDP-1
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
-# exec-once = /usr/lib/polkit-kde-authentication-agent-1
-exec-once = systemctl --user enable --now hyprpolkitagent.service
+exec-once = systemctl --user start hyprpolkitagent
 exec-once = ~/.local/bin/eww daemon
 exec-once = udiskie --tray
 exec-once = nm-applet
@@ -70,8 +69,8 @@ exec-once = hyprpaper
 # Set programs that you use
 $terminal = kitty
 $fileManager = kitty yazi
-# $screenshot = QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=Hyprland flameshot gui
-$screenshot = grimblast copy area
+$screenshot = QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=Hyprland flameshot gui
+# $screenshot = grimblast copy area
 $menu = wofi --allow-images --show drun
 
 # Some default env vars.
@@ -161,6 +160,7 @@ master {
 misc {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
     force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
+    middle_click_paste = false
 }
 
 # Example per-device config
@@ -173,7 +173,7 @@ device {
 #>V1 Window rules
 
 # kitty
-windowrule = opacity 1 override 0.8 override,class:^(kitty)$ # Example windowrule v2
+windowrule = match:class ^(kitty)$, opacity 1 override 0.8 override # Example windowrule v2
 
 # flameshot
 # windowrule=fullscreenstate, 0 2, flameshot
@@ -192,9 +192,13 @@ windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
 # Firefox extensions
 windowrulev2 = float,class:^firefox$,title:^Extension:
 
+# PHPStorm
+windowrulev2 = tag +jb, class:^jetbrains-.+$,floating:1
+windowrulev2 = stayfocused, tag:jb
+windowrulev2 = noinitialfocus, tag:jb
 #> Layer rules
-layerrule = blur, eww-topbar-toggle
-layerrule = ignorezero, eww-topbar-toggle
+layerrule = blur on, match:namespace eww-topbar-toggle
+layerrule = blur on, ignore_alpha 0.5, match:namespace eww-topbar-toggle
 
 #> Bindings
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -202,6 +206,20 @@ $mainMod = SUPER
 
 # flameshot
 bind = , Print, exec, $screenshot
+windowrule {
+    name = flameshot-multi-display-fix
+    match:class = flameshot
+
+    animation = fade
+    rounding = 0
+    border_size = 0
+    fullscreen_state = 0 0
+    float = on
+    pin = on
+    monitor = HDMI-A-2
+    move = 0 0
+    size = (monitor_w*3) (monitor_h)
+}
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, RETURN, exec, $terminal
@@ -215,6 +233,9 @@ bindr = $mainMod, SPACE, exec, pkill wofi || $menu
 binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh
 bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh
 bindr = , code:135, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh || ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh true
+
+# disable middle click
+bind = , mouse:274, exec,
 
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, S, togglesplit, # dwindle

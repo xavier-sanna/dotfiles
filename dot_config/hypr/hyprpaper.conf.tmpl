@@ -8,4 +8,19 @@ preload = ~/.config/hypr/wallpapers/wallpaper6.jpg
 preload = ~/.config/hypr/wallpapers/wallpaper7.jpg
 
 #set the default wallpaper(s) seen on initial workspace(s) --depending on the number of monitors used
-wallpaper = ,~/.config/hypr/wallpapers/{{ $defaultWallpaper }}
+## wallpaper = ~/.config/hypr/wallpapers/{{ $defaultWallpaper }}
+
+wallpaper {
+  monitor = DP-1
+  path = ~/.config/hypr/wallpapers/{{$defaultWallpaper}}
+}
+
+wallpaper {
+  monitor = HDMI-A-1
+  path = ~/.config/hypr/wallpapers/{{$defaultWallpaper}}
+}
+
+wallpaper {
+  monitor = HDMI-A-2
+  path = ~/.config/hypr/wallpapers/{{$defaultWallpaper}}
+}
