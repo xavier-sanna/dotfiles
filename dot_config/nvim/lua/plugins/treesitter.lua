@@ -35,6 +35,8 @@ local install_list = {
 	"yuck",
 	"hcl",
 	"asm",
+	"jinja",
+	"jinja_inline",
 }
 
 return {

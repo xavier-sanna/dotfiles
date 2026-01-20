@@ -16,6 +16,10 @@ return {
 			python = { "isort", "black" },
 			css = { "prettierd" },
 			hcl = { "hcl" },
+			tf = { "terraform" },
+			jinja = { "djlint" },
+			jinja_inline = { "djlint" },
+			sql = { "sleek" },
 		},
 		format_on_save = function(bufnr)
 			if slow_format_filetypes[vim.bo[bufnr].filetype] then

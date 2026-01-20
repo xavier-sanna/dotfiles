@@ -16,5 +16,8 @@ return {
 	"phpmd",
 	"php-cs-fixer",
 	"asmfmt",
+	"djlint",
+	"ansible-lint",
+	"sleek",
 	-- "twig-cs-fixer",
 }

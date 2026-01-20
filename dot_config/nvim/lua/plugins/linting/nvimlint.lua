@@ -9,6 +9,8 @@ return {
 			sh = { "shellcheck" },
 			json = { "jsonlint" },
 			python = { "flake8" },
+			jinja = { "djlint" },
+			jinja_inline = { "djlint" },
 			-- php = { "php" },
 		}
 
