@@ -1,0 +1,318 @@
+# See https://wiki.hyprland.org/Configuring/Monitors/
+{{- $realHostname := output "hostnamectl" "hostname" | trim -}}
+
+# Monitors
+{{- if eq $realHostname "dev-machine" }}
+monitor = DP-1,1920x1080@165,1920x0,1.0
+monitor = HDMI-A-1,1920x1080@60,3840x0,1.0
+monitor = HDMI-A-2,1920x1080@60,0x0,1.0
+
+# workspaces
+workspace = 1, monitor:DP-1, default:true
+workspace = 2, monitor:DP-1 
+workspace = 3, monitor:DP-1
+workspace = 4, monitor:DP-1
+workspace = 5, monitor:DP-1
+workspace = 6, monitor:DP-1
+workspace = 7, monitor:DP-1
+workspace = 8, monitor:DP-1
+workspace = 9, monitor:DP-1
+workspace = 10, monitor:DP-1
+workspace = 11, monitor:HDMI-A-2, default:true
+workspace = 12, monitor:HDMI-A-2
+workspace = 13, monitor:HDMI-A-2
+workspace = 14, monitor:HDMI-A-2
+workspace = 15, monitor:HDMI-A-2
+workspace = 16, monitor:HDMI-A-2
+workspace = 17, monitor:HDMI-A-1, default:true
+workspace = 18, monitor:HDMI-A-1
+workspace = 19, monitor:HDMI-A-1
+workspace = 20, monitor:HDMI-A-1
+workspace = 21, monitor:HDMI-A-1
+workspace = 22, monitor:HDMI-A-1
+{{- end }}
+
+{{- if eq $realHostname "dev-laptop" }}
+monitor = eDP-1,1920x1080@59.98800,0x0,1.0
+
+workspace = 1, monitor:eDP-1, default:true
+workspace = 2, monitor:eDP-1 
+workspace = 3, monitor:eDP-1
+workspace = 4, monitor:eDP-1
+workspace = 5, monitor:eDP-1
+workspace = 6, monitor:eDP-1
+workspace = 7, monitor:eDP-1
+workspace = 8, monitor:eDP-1
+workspace = 9, monitor:eDP-1
+workspace = 10, monitor:eDP-1
+{{- end }}
+
+# See https://wiki.hyprland.org/Configuring/Keywords/ for more
+
+# Execute your favorite apps at launch
+exec-once = systemctl --user start hyprpolkitagent
+exec-once = ~/.local/bin/eww daemon
+exec-once = udiskie --tray
+exec-once = nm-applet
+#exec-once = mega-cmd-server
+{{- if eq $realHostname "dev-machine" }}
+# exec-once = mpvpaper -o "no-audio --loop-playlist --vo=gpu-next" '*' ~/.config/hypr/live-wallpapers/alone-on-the-planet-moewalls-com.mp4
+exec-once = hyprpaper
+{{- end }}
+{{- if eq $realHostname "dev-laptop" }}
+exec-once = hyprpaper
+{{- end }}
+
+# Source a file (multi-file configs)
+# source = ~/.config/hypr/myColors.conf
+
+# Set programs that you use
+$terminal = kitty
+$fileManager = kitty yazi
+$screenshot = QT_QPA_PLATFORM=wayland XDG_CURRENT_DESKTOP=Hyprland flameshot gui
+# $screenshot = grimblast copy area
+$menu = wofi --allow-images --show drun
+
+# Some default env vars.
+# env = XCURSOR_SIZE,24
+# env = QT_QPA_PLATFORMTHEME,qt5ct # change to qt6ct if you have that
+
+cursor {
+  no_hardware_cursors = true
+}
+
+# For all categories, see https://wiki.hyprland.org/Configuring/Variables/
+input {
+    kb_layout = us
+    kb_variant = altgr-intl
+    kb_model =
+    kb_options =
+    kb_rules =
+
+    follow_mouse = 1
+
+    touchpad {
+        natural_scroll = no
+    }
+
+    sensitivity = 0 # -1.0 to 1.0, 0 means no modification.
+}
+
+general {
+    # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+    gaps_in = 5
+    gaps_out = 15 
+    border_size = 2
+    col.active_border = rgba(ffd319ee) rgba(ff901fee) 45deg
+    col.inactive_border = rgba(ff2975aa) rgba(595959aa) 45deg
+
+
+    layout = dwindle
+
+    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    allow_tearing = false
+}
+
+decoration {
+    # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+    rounding = 10
+    
+    blur {
+        enabled = true
+        size = 3
+        passes = 1
+    }
+
+    # drop_shadow = yes
+    # shadow_range = 4
+    # shadow_render_power = 3
+    # col.shadow = rgba(1a1a1aee)
+}
+
+animations {
+    enabled = yes
+
+    # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+
+    animation = windows, 1, 7, myBezier
+    animation = windowsOut, 1, 7, default, popin 80%
+    animation = border, 1, 10, default
+    animation = borderangle, 1, 8, default
+    animation = fade, 1, 7, default
+    animation = workspaces, 1, 6, default
+}
+
+dwindle {
+    # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+    pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+    preserve_split = yes # you probably want this
+}
+
+master {
+    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+    new_status = master
+}
+
+misc {
+    # See https://wiki.hyprland.org/Configuring/Variables/ for more
+    force_default_wallpaper = 0 # Set to 0 or 1 to disable the anime mascot wallpapers
+    middle_click_paste = false
+}
+
+# Example per-device config
+# See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
+device {
+    name = epic-mouse-v1
+    sensitivity = -0.5
+}
+
+#>V1 Window rules
+
+# kitty
+windowrule = match:class ^(kitty)$, opacity 1 override 0.8 override # Example windowrule v2
+
+# flameshot
+# windowrule=fullscreenstate, 0 2, flameshot
+# windowrule=float,flameshot
+# windowrule=monitor 0,flameshot
+# windowrule=workspace 0,flameshot
+# windowrule=move -1920 0,flameshot
+# windowrule=stayfocused,flameshot
+
+# gnome calc
+windowrule = match:class ^org\.gnome\.Calculator$, float on
+
+# suppress maximize globally (was: suppressevent maximize)
+windowrule = match:class .*, suppress_event maximize
+
+# Firefox extensions
+windowrule = match:class ^firefox$, match:title ^Extension:, float on
+
+# PHPStorm / JetBrains (tag floating JetBrains windows, then apply focus rules to that tag)
+windowrule = match:class ^jetbrains-.+$, match:float true, tag +jb
+windowrule = match:tag jb, stay_focused on
+windowrule = match:tag jb, no_initial_focus on
+
+#> Layer rules
+layerrule = blur on, match:namespace eww-topbar-toggle
+layerrule = blur on, ignore_alpha 0.5, match:namespace eww-topbar-toggle
+
+#> Bindings
+# See https://wiki.hyprland.org/Configuring/Keywords/ for more
+$mainMod = SUPER
+
+# flameshot
+bind = , Print, exec, $screenshot
+windowrule {
+    name = flameshot-multi-display-fix
+    match:class = flameshot
+
+    animation = fade
+    rounding = 0
+    border_size = 0
+    fullscreen_state = 0 0
+    float = on
+    pin = on
+    monitor = HDMI-A-2
+    move = 0 0
+    size = (monitor_w*3) (monitor_h)
+}
+
+# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+bind = $mainMod, RETURN, exec, $terminal
+bind = $mainMod, Q, killactive, 
+bind = $mainMod, E, exec, $fileManager
+bind = $mainMod, F, togglefloating, 
+bindr = $mainMod, SPACE, exec, pkill wofi || $menu
+# bind = $mainMod, M, exit, 
+
+# bar bindings
+binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh
+bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh
+bindr = , code:135, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh || ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh true
+
+# disable middle click
+bind = , mouse:274, exec,
+
+bind = $mainMod, P, pseudo, # dwindle
+bind = $mainMod, S, togglesplit, # dwindle
+
+# Move focus with mainMod + arrow keys
+bind = $mainMod, H, movefocus, l
+bind = $mainMod, L, movefocus, r
+bind = $mainMod, K, movefocus, u
+bind = $mainMod, J, movefocus, d
+
+# Switch workspaces with mainMod + [0-9]
+bindd = $mainMod, 1, select workspace: 1, workspace, 1
+bindd = $mainMod, 2, select workspace: 2, workspace, 2
+bindd = $mainMod, 3, select workspace: 3, workspace, 3
+bindd = $mainMod, 4, select workspace: 4, workspace, 4
+bindd = $mainMod, 5, select workspace: 5, workspace, 5
+bindd = $mainMod, 6, select workspace: 6, workspace, 6
+bindd = $mainMod, 7, select workspace: 7, workspace, 7
+bindd = $mainMod, 8, select workspace: 8, workspace, 8
+bindd = $mainMod, 9, select workspace: 9, workspace, 9
+bindd = $mainMod, 0, select workspace: 10, workspace, 10
+
+{{- if eq (output "hostnamectl" "hostname" | trim) "dev-machine" }}
+# multi monitor bindings
+bindd = $mainMod, F1, select workspace: 11, workspace, 11
+bindd = $mainMod, F2, select workspace: 12, workspace, 12
+bindd = $mainMod, F3, select workspace: 13, workspace, 13
+bindd = $mainMod, F4, select workspace: 14, workspace, 14
+bindd = $mainMod, F5, select workspace: 15, workspace, 15
+bindd = $mainMod, F6, select workspace: 16, workspace, 16
+bindd = $mainMod, F7, select workspace: 17, workspace, 17
+bindd = $mainMod, F8, select workspace: 18, workspace, 18
+bindd = $mainMod, F9, select workspace: 19, workspace, 19
+bindd = $mainMod, F10, select workspace: 20, workspace, 20
+bindd = $mainMod, F11, select workspace: 21, workspace, 21
+bindd = $mainMod, F12, select workspace: 22, workspace, 22
+{{- end }}
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+{{- if eq (output "hostnamectl" "hostname" | trim) "dev-machine" }}
+# multi monitor move bindings
+bind = $mainMod SHIFT, F1, movetoworkspace, 11
+bind = $mainMod SHIFT, F2, movetoworkspace, 12
+bind = $mainMod SHIFT, F3, movetoworkspace, 13
+bind = $mainMod SHIFT, F4, movetoworkspace, 14
+bind = $mainMod SHIFT, F5, movetoworkspace, 15
+bind = $mainMod SHIFT, F6, movetoworkspace, 16
+bind = $mainMod SHIFT, F7, movetoworkspace, 17
+bind = $mainMod SHIFT, F8, movetoworkspace, 18
+bind = $mainMod SHIFT, F9, movetoworkspace, 19
+bind = $mainMod SHIFT, F10, movetoworkspace, 20
+bind = $mainMod SHIFT, F11, movetoworkspace, 21
+bind = $mainMod SHIFT, F12, movetoworkspace, 22
+{{- end }}
+
+# Example special workspace (scratchpad)
+#bind = $mainMod, S, togglespecialworkspace, magic
+#bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+
+# Scroll through existing workspaces with mainMod + scroll
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+# vim: filetype=conf:

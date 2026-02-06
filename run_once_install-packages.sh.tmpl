@@ -1,0 +1,37 @@
+#!/bin/bash
+set -euo pipefail
+
+pacman_list="{{ .chezmoi.homeDir }}/packages.pacman"
+aur_list="{{ .chezmoi.homeDir }}/packages.aur"
+
+read_packages() {
+  local file="$1"
+  if [[ -f "$file" ]]; then
+    grep -vE '^\s*($|#)' "$file" || true
+  fi
+}
+
+mapfile -t pacman_pkgs < <(read_packages "$pacman_list")
+mapfile -t aur_pkgs < <(read_packages "$aur_list")
+
+if ! command -v yay >/dev/null 2>&1; then
+  if ! command -v pacman >/dev/null 2>&1; then
+    echo "pacman not found. This installer targets Arch-based systems." >&2
+    exit 1
+  fi
+
+  sudo pacman -S --needed --noconfirm git base-devel
+
+  tmpdir="$(mktemp -d)"
+  trap 'rm -rf "$tmpdir"' EXIT
+  git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
+  (cd "$tmpdir/yay" && makepkg -si --noconfirm)
+fi
+
+if ((${#pacman_pkgs[@]})); then
+  sudo pacman -S --needed --noconfirm "${pacman_pkgs[@]}"
+fi
+
+if ((${#aur_pkgs[@]})); then
+  yay -S --needed --noconfirm "${aur_pkgs[@]}"
+fi

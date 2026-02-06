@@ -1,0 +1,22 @@
+{{- $defaultWallpaper :=  "wallpaper2.jpg" -}}
+
+splash = false 
+preload = /home/xsanna/.config/hypr/wallpapers/{{ $defaultWallpaper }}
+
+wallpaper {
+  monitor = DP-1
+  path = ~/.config/hypr/wallpapers/{{ $defaultWallpaper }}
+  fit_mode = cover
+}
+
+wallpaper {
+  monitor = HDMI-A-1
+  path = ~/.config/hypr/wallpapers/{{ $defaultWallpaper }}
+  fit_mode = cover
+}
+
+wallpaper {
+  monitor = HDMI-A-2
+  path = ~/.config/hypr/wallpapers/{{ $defaultWallpaper }}
+  fit_mode = cover
+}

@@ -1,0 +1,19 @@
+# Pacman packages (one per line). Comments and blank lines are ignored.
+{{- $host := .chezmoi.hostname -}}
+
+socat
+jq
+lua
+luarocks
+wl-clipboard
+ruby
+rubygems
+ruby-stdlib
+
+{{- if eq $host "dev-machine" }}
+# dev-machine only
+{{- end }}
+
+{{- if eq $host "dev-laptop" }}
+# dev-laptop only
+{{- end }}
