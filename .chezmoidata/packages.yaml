@@ -1,0 +1,37 @@
+---
+packages:
+  arch:
+    pacman:
+      - zsh
+      - socat
+      - jq
+      - lua
+      - luarocks
+      - uv
+      - ttf-firacode-nerd
+      - wl-clipboard
+      - less
+      - github-cli
+      - bat
+      - bat-extras
+      - fzf
+      - lsd
+      - ruby
+      - rubygems
+      - ruby-stdlib
+      - kitty
+      - neovim
+      - terraform
+      - git-delta
+    aur:
+      - waypaper
+      - mpvpaper
+
+  # Optional host-specific additions.
+  hosts:
+    dev-machine:
+      pacman: []
+      aur: []
+    dev-laptop:
+      pacman: []
+      aur: []

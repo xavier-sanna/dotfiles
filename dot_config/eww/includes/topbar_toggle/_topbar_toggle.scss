@@ -1,0 +1,121 @@
+@use '../_variables.scss' as *;
+
+@use '../widgets/workspace/_workspace.widget.scss';
+@use '../widgets/clock/_clock.widget.scss';
+
+.topbar_toggle_workspace {
+  box-shadow: unset;
+}
+
+.topbar-top-layout-box {
+  margin-top: 8px;
+
+  .widget-box {
+    padding: 1rem;
+    background: rgba($bg-color-r, $bg-color-g, $bg-color-b, $bg-opacity);
+    border: 2px solid $bg-color-2;
+    border-radius: 15px 15px;
+    box-shadow: 4px 4px rgba($border-color-r, $border-color-g, $border-color-b);
+  }
+}
+
+.topbar-bottom-layout-box {
+  margin-bottom: 12px;
+}
+
+.bar-element {
+  &.left {
+    margin-left: 8px;
+  }
+
+  &.right {
+    margin-right: 14px;
+  }
+}
+
+/* https://github.com/elkowar/eww/issues/1067 */
+.systray menu {
+  border-radius: 15px;
+  padding: 0.33em;
+  color: $border-color;
+  background-color: $bg-color-2;
+
+  /*
+        >menuitem matches menuitem elements nested directly inside menu
+    */
+
+  menuitem {
+    padding: 0.25em;
+
+    arrow {
+
+      /*
+                Symbolic icons from your icons theme
+
+                EXAMPLE: (using Papirus-Dark icons)
+                1. run `find /usr/share/icons/Papirus-Dark/symbolic | grep <YOUR-ICON-NAME>`
+                2. use the name without the .svg part like what i did below
+
+             */
+
+      color: $border-color;
+
+      // min-width and min-height are required for the icon to be rendered
+      min-width: 1em;
+      min-height: 1em;
+    }
+
+    /* 
+            & before pseudo element means nesting selector modifiers
+            so instead of 
+            
+            menuitem:disabled{
+
+            } 
+
+            you type:
+
+            menuitem {
+                &:disabled{
+                }
+            }
+
+         */
+
+    radio {
+      // min-width and min-height are required for the icon to be rendered
+      min-width: 1em;
+      min-height: 1em;
+      padding-right: 0.5em;
+    }
+
+    check {
+      // same as before, min-width and min-height are required for the icon to be rendered
+      min-width: 1em;
+      min-height: 1em;
+      padding-right: 0.5em;
+    }
+  }
+
+  &:disabled label {
+    color: #aaa;
+  }
+
+  &:hover {
+    arrow {
+      color: #fff;
+    }
+
+    background-color: $bg-color-2;
+    color: #fff;
+  }
+
+  separator {
+    background-color: #fff;
+    padding-top: 0.06em;
+
+    &:last-child {
+      padding: unset;
+    }
+  }
+}

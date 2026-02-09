@@ -1,0 +1,31 @@
+{
+  "defaultName": "󰲌",
+  "bruno": "󰩃",
+  "firefox": "",
+  "kitty": {
+    "defaultName": "",
+    "extra": [
+      {
+        "title": "spotify_player",
+        "name": "󰓇"
+      },
+      {
+        "title": "^chezmoi edit|(sudo )?vim",
+        "name": ""
+      },
+      {
+        "title": "btop",
+        "name": ""
+      },
+      {
+        "title": "lazysql",
+        "name": "󱙌"
+      },
+      {
+        "title": "^Yazi:",
+        "name": ""
+      }
+    ]
+  },
+  "org.gnome.Calculator": ""
+}

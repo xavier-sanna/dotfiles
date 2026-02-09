@@ -1,0 +1,15 @@
+(defpoll TIME :interval "1s" `date +\"|%H:%M:%S\"`)
+(defpoll DATE :interval "60s" `date +\"|%a,%d %b %Y\"`)
+
+(defwidget _clock [halign]
+ (box :class "widget-box clock-widget"
+      :orientation "h"
+      :halign halign
+      :space-evenly false
+      ;; (box :class "sub-container icon-container"
+      ;;  (label :class "icon" :text ""))
+      (box :class "sub-container time-container"
+       (label :class "time-item" :valign "center" :wrap false :text TIME))
+      (box :class "sub-container date-container"
+       (label :class "date-item" :valign "center" :wrap false :text DATE))))
+      

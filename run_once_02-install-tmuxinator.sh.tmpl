@@ -1,0 +1,33 @@
+#!/bin/bash
+set -euo pipefail
+
+if ! command -v gem >/dev/null 2>&1; then
+  echo "gem not found; skipping tmuxinator install." >&2
+  exit 0
+fi
+
+if ! gem list -i tmuxinator >/dev/null 2>&1; then
+  gem install --user-install --no-document tmuxinator
+  printf "installed tmuxinator.\n"
+fi
+
+tmuxinator_completion_url="https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh"
+tmuxinator_completion_dir="{{ .chezmoi.homeDir }}/.zsh/completions"
+tmuxinator_completion_file="$tmuxinator_completion_dir/_tmuxinator"
+
+install -d "$tmuxinator_completion_dir"
+if command -v curl >/dev/null 2>&1; then
+  curl -fsSL "$tmuxinator_completion_url" -o "$tmuxinator_completion_file"
+  printf "imported tmuxinator zsh completions.\n"
+elif command -v wget >/dev/null 2>&1; then
+  wget -qO "$tmuxinator_completion_file" "$tmuxinator_completion_url"
+  printf "imported tmuxinator zsh completions.\n"
+else
+  echo "Neither curl nor wget found; skipping tmuxinator zsh completion install." >&2
+fi
+
+if [[ -f "$tmuxinator_completion_file" ]]; then
+  rm -f "$HOME/.zcompdump"* "$HOME/.cache/oh-my-zsh/.zcompdump"*
+fi
+
+# vim: ft=sh

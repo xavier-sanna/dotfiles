@@ -1,0 +1,10 @@
+{{- $realHostname := output "hostnamectl" "hostname" | trim -}}
+
+# Nvim
+.config/nvim/lazy-lock.json
+
+# Qtile
+.config/qtile/**/__pycache__
+
+# Age
+key.txt.age

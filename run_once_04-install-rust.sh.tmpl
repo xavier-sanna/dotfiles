@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+
+{{- if ne .chezmoi.os "linux" }}
+exit 0
+{{- end }}
+
+if command -v rustup >/dev/null 2>&1; then
+  exit 0
+fi
+
+if command -v curl >/dev/null 2>&1; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+elif command -v wget >/dev/null 2>&1; then
+  wget -qO- https://sh.rustup.rs | sh -s -- -y --no-modify-path
+else
+  echo "Neither curl nor wget found; cannot install rustup." >&2
+  exit 1
+fi
+
+# vim: ft=sh

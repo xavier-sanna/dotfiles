@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+
+sync_script="{{ .chezmoi.homeDir }}/.config/wallpapers/sync-wallpapers.sh"
+
+if [[ ! -x "$sync_script" ]]; then
+  echo "wallpapers sync script not found or not executable: $sync_script" >&2
+  exit 0
+fi
+
+if ! command -v gh >/dev/null 2>&1; then
+  echo "gh not found; skipping wallpapers sync." >&2
+  exit 0
+fi
+
+"$sync_script"
+
+# vim: ft=sh

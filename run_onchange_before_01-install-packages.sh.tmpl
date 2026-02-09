@@ -1,0 +1,52 @@
+#!/bin/bash
+set -euo pipefail
+
+{{- if ne .chezmoi.os "linux" }}
+exit 0
+{{- end }}
+
+if ! command -v pacman >/dev/null 2>&1; then
+  echo "pacman not found; skipping Arch package install." >&2
+  exit 0
+fi
+
+pacman_pkgs=(
+{{- range .packages.arch.pacman }}
+  {{ . | quote }}
+{{- end }}
+{{- with (index .packages.hosts .chezmoi.hostname) }}
+{{- range .pacman }}
+  {{ . | quote }}
+{{- end }}
+{{- end }}
+)
+
+aur_pkgs=(
+{{- range .packages.arch.aur }}
+  {{ . | quote }}
+{{- end }}
+{{- with (index .packages.hosts .chezmoi.hostname) }}
+{{- range .aur }}
+  {{ . | quote }}
+{{- end }}
+{{- end }}
+)
+
+if ! command -v yay >/dev/null 2>&1; then
+  sudo pacman -S --needed --noconfirm git base-devel
+
+  tmpdir="$(mktemp -d)"
+  trap 'rm -rf "$tmpdir"' EXIT
+  git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
+  (cd "$tmpdir/yay" && makepkg -si --noconfirm)
+fi
+
+if ((${#pacman_pkgs[@]})); then
+  sudo pacman -S --needed --noconfirm "${pacman_pkgs[@]}"
+fi
+
+if ((${#aur_pkgs[@]})); then
+  yay -S --needed --noconfirm "${aur_pkgs[@]}"
+fi
+
+# vim: ft=sh

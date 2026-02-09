@@ -1,0 +1,21 @@
+(deflisten workspaces_data "{{ .chezmoi.homeDir }}/.config/eww/includes/widgets/workspace/get-workspaces.sh")
+
+(defwidget _workspace [monitor]
+    (box :class "widget-box workspaces-widget"
+         :halign "center"
+         :space-evenly false
+      (for i in {workspaces_data[monitor].workspaces}
+        (box :class "workspace-item ${arraylength(i.clients) > 1 ? 'has-clients' : ''} ${arraylength(i.clients) == 1 ? 'has-single-client' : ''}"
+             :space-evenly false
+         (button
+          :onclick "hyprctl dispatch workspace ${i.id}"
+          :class "key-button ${i.active ? 'active' : ''} ${i.empty ? 'empty' : ''}"
+          "${i.name}")
+         (box :class "workspace-clients"
+              :halign "start"
+          (for c in {i.clients}
+            (label :class "client ${c.lastActive == true && i.active == true ? 'active' : ''}" :text {c.name} :xalign 0.5 :justify "center")))))))
+          
+
+          
+         

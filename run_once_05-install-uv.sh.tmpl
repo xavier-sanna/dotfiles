@@ -1,0 +1,52 @@
+#!/bin/bash
+set -euo pipefail
+
+{{- if and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
+exit 0
+{{- end }}
+
+uv_installer_url="https://astral.sh/uv/install.sh"
+uv_bin="$HOME/.local/bin/uv"
+uvx_bin="$HOME/.local/bin/uvx"
+uv_completion_dir="{{ .chezmoi.homeDir }}/.zsh/completions"
+
+if command -v uv >/dev/null 2>&1; then
+  uv_cmd="$(command -v uv)"
+else
+  if command -v curl >/dev/null 2>&1; then
+    curl -LsSf "$uv_installer_url" | env UV_NO_MODIFY_PATH=1 sh
+  elif command -v wget >/dev/null 2>&1; then
+    wget -qO- "$uv_installer_url" | env UV_NO_MODIFY_PATH=1 sh
+  else
+    echo "Neither curl nor wget found; cannot install uv." >&2
+    exit 1
+  fi
+
+  if command -v uv >/dev/null 2>&1; then
+    uv_cmd="$(command -v uv)"
+  elif [[ -x "$uv_bin" ]]; then
+    uv_cmd="$uv_bin"
+  else
+    echo "uv installation failed; command not found after installer run." >&2
+    exit 1
+  fi
+fi
+
+install -d "$uv_completion_dir"
+"$uv_cmd" generate-shell-completion zsh > "$uv_completion_dir/_uv"
+
+if command -v uvx >/dev/null 2>&1; then
+  uvx_cmd="$(command -v uvx)"
+elif [[ -x "$uvx_bin" ]]; then
+  uvx_cmd="$uvx_bin"
+else
+  uvx_cmd=""
+fi
+
+if [[ -n "$uvx_cmd" ]]; then
+  "$uvx_cmd" --generate-shell-completion zsh > "$uv_completion_dir/_uvx"
+fi
+
+rm -f "$HOME/.zcompdump"* "$HOME/.cache/oh-my-zsh/.zcompdump"*
+
+# vim: ft=sh

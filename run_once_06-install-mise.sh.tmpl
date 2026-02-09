@@ -1,0 +1,56 @@
+#!/bin/bash
+set -euo pipefail
+
+{{- if and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
+exit 0
+{{- end }}
+
+mise_installer_url="https://mise.run"
+mise_bin="$HOME/.local/bin/mise"
+zsh_completion_dir="{{ .chezmoi.homeDir }}/.zsh/completions"
+zsh_completion_file="$zsh_completion_dir/_mise"
+
+if command -v mise >/dev/null 2>&1; then
+  mise_cmd="$(command -v mise)"
+else
+  if command -v curl >/dev/null 2>&1; then
+    curl -fsSL "$mise_installer_url" | sh
+  elif command -v wget >/dev/null 2>&1; then
+    wget -qO- "$mise_installer_url" | sh
+  else
+    echo "Neither curl nor wget found; cannot install mise." >&2
+    exit 1
+  fi
+
+  if command -v mise >/dev/null 2>&1; then
+    mise_cmd="$(command -v mise)"
+  elif [[ -x "$mise_bin" ]]; then
+    mise_cmd="$mise_bin"
+  else
+    echo "mise installation failed; command not found after installer run." >&2
+    exit 1
+  fi
+fi
+
+install -d "$zsh_completion_dir"
+tmp_completion="$(mktemp)"
+trap 'rm -f "$tmp_completion"' EXIT
+
+if ! "$mise_cmd" completion zsh >"$tmp_completion" 2>/dev/null || [[ ! -s "$tmp_completion" ]]; then
+  "$mise_cmd" use -g usage >/dev/null
+
+  if ! "$mise_cmd" completion zsh --usage >"$tmp_completion" 2>/dev/null || [[ ! -s "$tmp_completion" ]]; then
+    "$mise_cmd" completion zsh >"$tmp_completion"
+  fi
+fi
+
+if [[ ! -s "$tmp_completion" ]]; then
+  echo "Failed to generate mise zsh completion." >&2
+  exit 1
+fi
+
+mv "$tmp_completion" "$zsh_completion_file"
+
+rm -f "$HOME/.zcompdump"* "$HOME/.cache/oh-my-zsh/.zcompdump"*
+
+# vim: ft=sh
