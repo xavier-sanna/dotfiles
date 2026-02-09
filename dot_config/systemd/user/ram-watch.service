@@ -1,0 +1,9 @@
+[Unit]
+Description=RAM watcher with dunst notifications
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/ram-watch.sh
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=Run RAM watcher every 10 seconds
+
+[Timer]
+Unit=ram-watch.service
+OnBootSec=1m
+OnUnitActiveSec=10s
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
+

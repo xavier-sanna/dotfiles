@@ -1,0 +1,30 @@
+#!/bin/bash
+set -euo pipefail
+
+{{- if ne .chezmoi.os "linux" }}
+exit 0
+{{- end }}
+
+timer_unit="ram-watch.timer"
+service_unit="ram-watch.service"
+unit_dir="${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user"
+watch_script="$HOME/.local/bin/ram-watch.sh"
+
+if [[ ! -f "$unit_dir/$timer_unit" || ! -f "$unit_dir/$service_unit" || ! -x "$watch_script" ]]; then
+  exit 0
+fi
+
+if ! command -v systemctl >/dev/null 2>&1; then
+  exit 0
+fi
+
+if ! systemctl --user show-environment >/dev/null 2>&1; then
+  echo "systemctl --user unavailable; skipping ${timer_unit} activation." >&2
+  exit 0
+fi
+
+systemctl --user daemon-reload
+systemctl --user enable "$timer_unit" >/dev/null
+systemctl --user restart "$timer_unit" >/dev/null
+
+# vim: ft=sh
