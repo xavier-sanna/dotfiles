@@ -23,6 +23,8 @@ packages:
       - neovim
       - terraform
       - git-delta
+      - dunst
+      - ansible
     aur:
       - waypaper
       - mpvpaper
