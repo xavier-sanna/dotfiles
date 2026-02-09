@@ -1,0 +1,25 @@
+#!/bin/bash
+set -euo pipefail
+
+{{- if ne .chezmoi.os "linux" }}
+exit 0
+{{- end }}
+
+if ! command -v pacman >/dev/null 2>&1; then
+  echo "pacman not found; skipping yay install." >&2
+  exit 0
+fi
+
+if command -v yay >/dev/null 2>&1; then
+  exit 0
+fi
+
+sudo pacman -S --needed --noconfirm git base-devel
+
+tmpdir="$(mktemp -d)"
+trap 'rm -rf "$tmpdir"' EXIT
+
+git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
+(cd "$tmpdir/yay" && makepkg -si --noconfirm)
+
+# vim: ft=sh
