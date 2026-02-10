@@ -8,7 +8,7 @@ return {
 			yaml = { "yamllint" },
 			sh = { "shellcheck" },
 			json = { "jsonlint" },
-			python = { "flake8" },
+			python = { "ruff" },
 			jinja = { "djlint" },
 			jinja_inline = { "djlint" },
 			-- php = { "php" },

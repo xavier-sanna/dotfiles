@@ -14,7 +14,7 @@ return {
 			yaml = { "yamlfmt" },
 			sh = { "shfmt" },
 			json = { "fixjson" },
-			python = { "isort", "black" },
+			python = { "ruff" },
 			css = { "prettierd" },
 			hcl = { "hcl" },
 			tf = { "terraform" },

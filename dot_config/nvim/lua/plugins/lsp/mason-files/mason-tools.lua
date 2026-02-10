@@ -1,4 +1,5 @@
 return {
+	"actionlint",
 	"prettier",
 	"prettierd",
 	"stylua",
@@ -10,9 +11,10 @@ return {
 	"golangci-lint",
 	"jsonlint",
 	"fixjson",
-	"flake8",
 	"isort",
 	"black",
+	"hclfmt",
+	"terraform",
 	"phpstan",
 	"phpmd",
 	"php-cs-fixer",
@@ -20,5 +22,4 @@ return {
 	"djlint",
 	"ansible-lint",
 	"sleek",
-	-- "twig-cs-fixer",
 }

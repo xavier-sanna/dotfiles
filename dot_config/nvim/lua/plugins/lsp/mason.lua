@@ -25,11 +25,12 @@ return {
 
 		local servers = require("plugins.lsp.mason-files.mason-servers")
 		local tools = require("plugins.lsp.mason-files.mason-tools")
+		local server_names = vim.tbl_keys(servers)
 
 		local has_setup_handlers = type(mason_lspconfig.setup_handlers) == "function"
 		local mason_lspconfig_opts = {
 			-- list of servers for mason to install
-			ensure_installed = vim.tbl_keys(servers),
+			ensure_installed = server_names,
 		}
 
 		if has_setup_handlers then
@@ -41,8 +42,18 @@ return {
 
 		mason_lspconfig.setup(mason_lspconfig_opts)
 
+		local mason_packages = vim.list_extend(vim.deepcopy(tools), server_names)
+		local seen = {}
+		local ensure_installed = {}
+		for _, package_name in ipairs(mason_packages) do
+			if not seen[package_name] then
+				seen[package_name] = true
+				table.insert(ensure_installed, package_name)
+			end
+		end
+
 		mason_tool_installer.setup({
-			ensure_installed = tools,
+			ensure_installed = ensure_installed,
 		})
 
 		-- used to enable autocompletion (assign to every lsp server config)
