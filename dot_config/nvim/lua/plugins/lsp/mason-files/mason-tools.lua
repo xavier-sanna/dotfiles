@@ -22,4 +22,5 @@ return {
 	"djlint",
 	"ansible-lint",
 	"sleek",
+	"ruff",
 }

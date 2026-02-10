@@ -1,3 +1,5 @@
+local util = require("lspconfig.util")
+
 return {
 	root_dir = function(pattern)
 		local cwd = vim.uv.cwd()

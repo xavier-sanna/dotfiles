@@ -63,12 +63,16 @@ return {
 
 		wk.add({ "<leader>r", group = "lsp" })
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- Diagnostic sign text (Neovim 0.10+ style; replaces sign_define).
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.INFO] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+				},
+			},
+		})
 	end,
 }
