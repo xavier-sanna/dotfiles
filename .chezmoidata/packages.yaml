@@ -26,15 +26,25 @@ packages:
       - dunst
       - ansible
       - hyprsunset
+      - ripgrep
+      - pandoc
+      - tig
+      - w3m
     aur:
       - waypaper
       - mpvpaper
+
+  pnpm:
+    global:
+      - nb.sh
 
   # Optional host-specific additions.
   hosts:
     dev-machine:
       pacman: []
       aur: []
+      pnpm_global: []
     dev-laptop:
       pacman: []
       aur: []
+      pnpm_global: []

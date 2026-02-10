@@ -1,0 +1,51 @@
+#!/bin/bash
+set -euo pipefail
+
+{{- if ne .chezmoi.os "linux" }}
+exit 0
+{{- end }}
+
+pnpm_pkgs=(
+{{- range .packages.pnpm.global }}
+  {{ . | quote }}
+{{- end }}
+{{- with (index .packages.hosts .chezmoi.hostname) }}
+{{- range .pnpm_global }}
+  {{ . | quote }}
+{{- end }}
+{{- end }}
+)
+
+if ((${#pnpm_pkgs[@]} == 0)); then
+  exit 0
+fi
+
+pnpm_bin="$HOME/.local/share/pnpm/pnpm"
+
+if command -v pnpm >/dev/null 2>&1; then
+  pnpm_cmd="$(command -v pnpm)"
+elif [[ -x "$pnpm_bin" ]]; then
+  pnpm_cmd="$pnpm_bin"
+else
+  if command -v curl >/dev/null 2>&1; then
+    curl -fsSL https://get.pnpm.io/install.sh | env ENV=/dev/null SHELL="$(command -v sh)" sh -
+  elif command -v wget >/dev/null 2>&1; then
+    wget -qO- https://get.pnpm.io/install.sh | env ENV=/dev/null SHELL="$(command -v sh)" sh -
+  else
+    echo "Neither curl nor wget found; cannot install pnpm." >&2
+    exit 1
+  fi
+
+  if command -v pnpm >/dev/null 2>&1; then
+    pnpm_cmd="$(command -v pnpm)"
+  elif [[ -x "$pnpm_bin" ]]; then
+    pnpm_cmd="$pnpm_bin"
+  else
+    echo "pnpm installation failed; command not found after installer run." >&2
+    exit 1
+  fi
+fi
+
+"$pnpm_cmd" add --global "${pnpm_pkgs[@]}"
+
+# vim: ft=sh
