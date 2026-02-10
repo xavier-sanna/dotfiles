@@ -12,7 +12,6 @@ return {
 	"jsonlint",
 	"fixjson",
 	"isort",
-	"black",
 	"hclfmt",
 	"terraform",
 	"phpstan",

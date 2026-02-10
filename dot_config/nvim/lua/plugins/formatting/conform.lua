@@ -22,6 +22,16 @@ return {
 			jinja_inline = { "djlint" },
 			sql = { "sleek" },
 		},
+
+		formatters = {
+			djlint = {
+				condition = function(_, ctx)
+					local filename = ((ctx and ctx.filename) or ""):lower()
+					return filename:match("%.ya?ml%.j2$") == nil
+				end,
+			},
+		},
+
 		format_on_save = function(bufnr)
 			if slow_format_filetypes[vim.bo[bufnr].filetype] then
 				return
