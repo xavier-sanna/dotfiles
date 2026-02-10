@@ -25,6 +25,7 @@ packages:
       - git-delta
       - dunst
       - ansible
+      - hyprsunset
     aur:
       - waypaper
       - mpvpaper
