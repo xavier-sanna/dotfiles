@@ -12,6 +12,7 @@ return {
 			jinja = { "djlint" },
 			jinja_inline = { "djlint" },
 			-- php = { "php" },
+			toml = { "tombi" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

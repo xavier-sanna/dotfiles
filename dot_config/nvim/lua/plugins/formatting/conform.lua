@@ -21,6 +21,7 @@ return {
 			-- jinja = { "djlint" },
 			-- jinja_inline = { "djlint" },
 			sql = { "sleek" },
+			toml = { "tombi" },
 		},
 
 		-- formatters = {

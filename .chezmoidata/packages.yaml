@@ -30,6 +30,7 @@ packages:
       - pandoc
       - tig
       - w3m
+      - usage
     aur:
       - waypaper
       - mpvpaper

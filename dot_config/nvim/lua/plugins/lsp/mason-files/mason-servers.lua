@@ -21,4 +21,5 @@ return {
 	ansiblels = require("plugins.lsp.settings.ansiblels"),
 	gh_actions_ls = {},
 	stylelint_lsp = {},
+	tombi = {},
 }
