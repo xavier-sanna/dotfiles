@@ -69,6 +69,17 @@ return {
 
 		-- Diagnostic sign text (Neovim 0.10+ style; replaces sign_define).
 		vim.diagnostic.config({
+			virtual_text = {
+				source = "if_many",
+				spacing = 2,
+			},
+			float = {
+				source = "always",
+				border = "rounded",
+			},
+			underline = true,
+			severity_sort = true,
+			update_in_insert = false,
 			signs = {
 				text = {
 					[vim.diagnostic.severity.ERROR] = " ",
