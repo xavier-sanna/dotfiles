@@ -6,5 +6,8 @@
 # Qtile
 .config/qtile/**/__pycache__
 
+# Hyprland
+.config/hypr/scripts/__pycache__
+
 # Age
 key.txt.age

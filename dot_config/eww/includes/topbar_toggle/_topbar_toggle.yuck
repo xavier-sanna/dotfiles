@@ -25,13 +25,12 @@
       (box :class "bar-element right"
            (_clock :halign "end"))))
 
-(defwindow topbar_toggle [monitor]
-  :monitor monitor 
+(defwindow topbar_toggle [ws_monitor]
   :stacking "fg"
   :geometry (geometry :width "100%" 
              :height "8%") 
              
   :exclusive false
   :namespace "eww-topbar-toggle"
-  (topbar_layout :monitor monitor))
+  (topbar_layout :monitor ws_monitor))
   
