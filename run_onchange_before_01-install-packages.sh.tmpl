@@ -46,7 +46,7 @@ if ((${#pacman_pkgs[@]})); then
 fi
 
 if ((${#aur_pkgs[@]})); then
-  yay -S --needed --noconfirm "${aur_pkgs[@]}"
+  yay -S --needed --noconfirm --removemake "${aur_pkgs[@]}"
 fi
 
 # vim: ft=sh
