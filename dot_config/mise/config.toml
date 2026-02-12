@@ -1,2 +1,6 @@
+[tools]
+php = "latest"
+node = "lts"
+
 [shell_alias]
 mr = "mise run"
