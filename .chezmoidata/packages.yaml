@@ -40,12 +40,11 @@ packages:
     aur:
       - waypaper
       - mpvpaper
+      - aylurs-gtk-shell-git
 
   pnpm:
     global:
       - nb.sh
-
-  
 
   # Optional host-specific additions.
   hosts:
