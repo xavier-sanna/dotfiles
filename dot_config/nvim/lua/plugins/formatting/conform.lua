@@ -22,6 +22,7 @@ return {
 			-- jinja_inline = { "djlint" },
 			sql = { "sleek" },
 			toml = { "tombi" },
+			scss = { "prettierd" },
 		},
 
 		-- formatters = {
