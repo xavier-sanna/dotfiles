@@ -1,5 +1,9 @@
 local slow_format_filetypes = {}
 
+local function lsp_fallback_for(bufnr)
+	return vim.bo[bufnr].filetype ~= "php"
+end
+
 return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
@@ -10,7 +14,7 @@ return {
 			javascriptreact = { "prettierd" },
 			typescript = { "prettierd" },
 			typescriptreact = { "prettierd" },
-			php = { "php-cs-fixer" },
+			php = { "php_cs_fixer" },
 			yaml = { "yamlfmt" },
 			sh = { "shfmt" },
 			json = { "fixjson" },
@@ -44,14 +48,14 @@ return {
 				end
 			end
 
-			return { timeout_ms = 200, lsp_fallback = true }, on_format
+			return { timeout_ms = 200, lsp_fallback = lsp_fallback_for(bufnr) }, on_format
 		end,
 
 		format_after_save = function(bufnr)
 			if not slow_format_filetypes[vim.bo[bufnr].filetype] then
 				return
 			end
-			return { lsp_fallback = true }
+			return { lsp_fallback = lsp_fallback_for(bufnr) }
 		end,
 		-- format_on_save = {
 		-- 	-- These options will be passed to conform.format()
@@ -65,8 +69,9 @@ return {
 		conform.setup(opts)
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+			local bufnr = vim.api.nvim_get_current_buf()
 			conform.format({
-				lsp_fallback = true,
+				lsp_fallback = lsp_fallback_for(bufnr),
 				async = false,
 				timeout_ms = 1000,
 			})
