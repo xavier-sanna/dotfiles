@@ -1,6 +1,12 @@
 [tools]
 php = "latest"
 node = "lts"
+pnpm = "latest"
+codex = "latest"
+"npm:nb.sh" = "latest"
+"npm:@nestjs/cli" = "latest"
+ollama = "latest"
+opencode = "latest"
 
 [shell_alias]
 mr = "mise run"
