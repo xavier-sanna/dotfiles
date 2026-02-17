@@ -70,12 +70,6 @@ source $HOME/.zshaliases
 # Rustup
 PATH="$HOME/.cargo/bin:$PATH"
 
-# PNPM
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 # Ruby
 GEM_HOME="$(gem env user_gemhome)"
