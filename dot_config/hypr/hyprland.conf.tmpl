@@ -235,9 +235,13 @@ bindr = $mainMod, SPACE, exec, pkill wofi || $menu
 # bind = $mainMod, M, exit, 
 
 # bar bindings
-binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh
-bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh
-bindr = , code:135, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh || ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh true
+# binde = , SUPER_L, exec, ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh
+# bindrt = $mainMod, SUPER_L, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh
+# bindr = , code:135, exec, ~/.config/hypr/scripts/hide-topbar.{{ $realHostname }}.sh || ~/.config/hypr/scripts/show-topbar.{{ $realHostname }}.sh true
+
+binde = , SUPER_L, exec, ags request superbar show
+bindrt = $mainMod, SUPER_L, exec, ags request superbar hide
+bindr = , code:135, exec, ags request superbar toggle
 
 # disable middle click
 bind = , mouse:274, exec,
