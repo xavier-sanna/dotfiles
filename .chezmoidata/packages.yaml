@@ -41,6 +41,7 @@ packages:
       - waypaper
       - mpvpaper
       - aylurs-gtk-shell-git
+      - libastal-meta
 
   pnpm:
     global:
