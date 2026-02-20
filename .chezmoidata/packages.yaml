@@ -43,10 +43,6 @@ packages:
       - aylurs-gtk-shell-git
       - libastal-meta
 
-  pnpm:
-    global:
-      - nb.sh
-
   # Optional host-specific additions.
   hosts:
     dev-machine:
